@@ -4,6 +4,7 @@ import de.softwartechnik.catalin.core.model.Person;
 import de.softwartechnik.catalin.core.repository.jpa.AbstractJPARepository;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.persistence.EntityManager;
 
 /**
@@ -22,7 +23,7 @@ public class PersonJPARepository extends AbstractJPARepository<Person> implement
      * @param entityManager The jpa entity manager.
      */
     @Inject
-    public PersonJPARepository(EntityManager entityManager) {
+    public PersonJPARepository(Provider<EntityManager> entityManager) {
         super(ENTITY_CLAZZ, entityManager);
     }
 }

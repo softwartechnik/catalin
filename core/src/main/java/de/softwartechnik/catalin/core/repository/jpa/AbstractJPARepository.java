@@ -2,6 +2,7 @@ package de.softwartechnik.catalin.core.repository.jpa;
 
 import de.softwartechnik.catalin.core.repository.base.AbstractRepository;
 
+import javax.inject.Provider;
 import javax.persistence.EntityManager;
 
 /**
@@ -20,18 +21,20 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
      * Create a new repository by the managed entities class and the JPA entity manager.
      *
      * @param entityClazz   The class of the managed entity.
-     * @param entityManager The JPA entity manager.
+     * @param entityManagerProvider The JPA entity manager provider.
      */
-    public AbstractJPARepository(Class<EntityType> entityClazz, EntityManager entityManager) {
+    public AbstractJPARepository(Class<EntityType> entityClazz, Provider<EntityManager> entityManagerProvider) {
         super(entityClazz);
-        this.entityManager = entityManager;
+        entityManager = entityManagerProvider.get();
     }
 
     @Override
     public EntityType save(EntityType entity) {
 
+        entityManager.getTransaction().begin();
         entityManager.persist(entity);
         entityManager.flush();
+        entityManager.getTransaction().commit();
 
         return entity;
     }
@@ -45,6 +48,8 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
     @Override
     public void remove(EntityType entity) {
 
+        entityManager.getTransaction().begin();
         entityManager.remove(entity);
+        entityManager.getTransaction().commit();
     }
 }

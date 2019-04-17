@@ -1,7 +1,9 @@
 package de.softwartechnik.catalin.core.model.base;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,8 @@ import javax.persistence.Version;
 @MappedSuperclass
 @Data
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public abstract class BaseModel {
 
     @Id
