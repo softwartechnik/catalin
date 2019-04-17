@@ -30,6 +30,10 @@ dependencies {
      * Hibernate
      */
     compile 'org.hibernate:hibernate-core:5.4.2.Final'
+    
+    compile group: 'com.google.inject.extensions', name: 'guice-persist', version: '4.2.2'
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
+
 }
 
 shadowJar {
