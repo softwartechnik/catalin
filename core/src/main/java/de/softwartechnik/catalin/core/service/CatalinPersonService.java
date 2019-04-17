@@ -18,7 +18,7 @@ public class CatalinPersonService implements PersonService {
     @Override
     public Person createPerson(String firstName, String lastName, Date birthday) {
 
-        Person person = new Person(-1, firstName, lastName, birthday);
+        Person person = new Person(firstName, lastName, birthday);
         return personRepository.save(person);
     }
 

@@ -14,9 +14,9 @@ import java.util.Date;
 @Table(name = "persons")
 @Entity(name = "person")
 @Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Person extends BaseModel {
 
     @Column(name = "first_name", nullable = false)
