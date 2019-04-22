@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'de.softwartechnik.catalin'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':core')
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
+}

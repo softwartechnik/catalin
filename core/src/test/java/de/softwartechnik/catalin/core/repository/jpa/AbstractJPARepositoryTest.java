@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.inject.Provider;
 import javax.persistence.EntityManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +29,12 @@ class AbstractJPARepositoryTest {
     @BeforeEach
     void setUp() {
 
-        abstractJPARepository = new AbstractJPARepository<AbstractJPARepositoryTest>(TEST_CLASS, entityManager) {
+        abstractJPARepository = new AbstractJPARepository<AbstractJPARepositoryTest>(TEST_CLASS, new Provider<EntityManager>() {
+            @Override
+            public EntityManager get() {
+                return entityManager;
+            }
+        }) {
         };
     }
 

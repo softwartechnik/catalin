@@ -4,6 +4,7 @@ import de.softwartechnik.catalin.core.repository.base.AbstractRepository;
 
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 /**
  * The {@link AbstractRepository} using a JPA {@link EntityManager} for persistence.
@@ -15,7 +16,7 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
     /**
      * The JPA entity manager.
      */
-    private final EntityManager entityManager;
+    private final Provider<EntityManager> entityManager;
 
     /**
      * Create a new repository by the managed entities class and the JPA entity manager.
@@ -25,16 +26,15 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
      */
     public AbstractJPARepository(Class<EntityType> entityClazz, Provider<EntityManager> entityManagerProvider) {
         super(entityClazz);
-        entityManager = entityManagerProvider.get();
+        entityManager = entityManagerProvider;
     }
 
     @Override
+    @Transactional
     public EntityType save(EntityType entity) {
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(entity);
-        entityManager.flush();
-        entityManager.getTransaction().commit();
+        entityManager.get().persist(entity);
+        entityManager.get().flush();
 
         return entity;
     }
@@ -42,14 +42,14 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
     @Override
     public EntityType find(long entityId) {
 
-        return entityManager.find(getEntityClass(), entityId);
+        return entityManager.get().find(getEntityClass(), entityId);
     }
 
     @Override
     public void remove(EntityType entity) {
 
-        entityManager.getTransaction().begin();
-        entityManager.remove(entity);
-        entityManager.getTransaction().commit();
+        entityManager.get().getTransaction().begin();
+        entityManager.get().remove(entity);
+        entityManager.get().getTransaction().commit();
     }
 }

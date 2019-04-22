@@ -1,4 +1,6 @@
 rootProject.name = 'catalin'
 include 'core'
 findProject(':core')?.name = 'catalin-core'
+include 'gui'
+findProject(':gui')?.name = 'catalin-gui'
 
