@@ -18,7 +18,6 @@ dependencies {
      * Google Guice for dependency injection.
      */
     compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
-    testCompile group: 'com.google.inject.extensions', name: 'guice-testlib', version: '4.2.2'
 
     /**
      * Lombok for less boilerplate code.
