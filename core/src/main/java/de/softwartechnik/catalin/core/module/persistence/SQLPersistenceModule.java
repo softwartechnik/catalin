@@ -1,12 +1,8 @@
-package de.softwartechnik.catalin.core.module;
+package de.softwartechnik.catalin.core.module.persistence;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.persist.PersistService;
 import com.google.inject.persist.jpa.JpaPersistModule;
-import de.softwartechnik.catalin.core.config.CatalinCoreConfig;
-import de.softwartechnik.catalin.core.config.CatalinPersistenceMode;
-import de.softwartechnik.catalin.core.module.persistence.MapPersistenceModule;
-import de.softwartechnik.catalin.core.module.persistence.SQLPersistenceModule;
 import de.softwartechnik.catalin.core.repository.AirlineJPARepository;
 import de.softwartechnik.catalin.core.repository.AirlineRepository;
 import de.softwartechnik.catalin.core.repository.AirportJPARepository;
@@ -24,45 +20,36 @@ import de.softwartechnik.catalin.core.repository.PersonRepository;
 import de.softwartechnik.catalin.core.repository.PlaneJPARepository;
 import de.softwartechnik.catalin.core.repository.PlaneRepository;
 import de.softwartechnik.catalin.core.service.AirlineService;
-import de.softwartechnik.catalin.core.service.BookingService;
 import de.softwartechnik.catalin.core.service.CatalinAirlineService;
-import de.softwartechnik.catalin.core.service.CatalinBookingService;
-import de.softwartechnik.catalin.core.service.CatalinFlightService;
 import de.softwartechnik.catalin.core.service.CatalinPersonService;
-import de.softwartechnik.catalin.core.service.FlightService;
 import de.softwartechnik.catalin.core.service.PersonService;
 
 import javax.inject.Inject;
 
-/**
- * The central guice module.
- */
-public class CatalinCoreModule extends AbstractModule {
-
-    private final CatalinCoreConfig coreConfig;
-
-    public CatalinCoreModule(CatalinCoreConfig coreConfig) {
-        this.coreConfig = coreConfig;
-    }
+public class SQLPersistenceModule extends AbstractModule {
 
     @Override
     protected void configure() {
 
-        CatalinPersistenceMode persistenceMode = coreConfig.getPersistenceMode();
+        install(new JpaPersistModule("catalinPersistence"));
 
-        switch (persistenceMode) {
-            case SQL: {
-                install(new SQLPersistenceModule());
-                break;
-            }
-            default: {
-                install(new MapPersistenceModule());
-            }
+        bind(HibernateInitializer.class).asEagerSingleton();
+
+        bind(PersonRepository.class).to(PersonJPARepository.class);
+        bind(AirlineRepository.class).to(AirlineJPARepository.class);
+        bind(AirportRepository.class).to(AirportJPARepository.class);
+        bind(BookingRepository.class).to(BookingJPARepository.class);
+        bind(BookingExtraRepository.class).to(BookingExtraJPARepository.class);
+        bind(EmployeeRepository.class).to(EmployeeJPARepository.class);
+        bind(FlightRepository.class).to(FlightJPARepository.class);
+        bind(PlaneRepository.class).to(PlaneJPARepository.class);
+    }
+
+    private static class HibernateInitializer {
+
+        @Inject
+        public HibernateInitializer(PersistService persistService) {
+            persistService.start();
         }
-
-        bind(PersonService.class).to(CatalinPersonService.class).asEagerSingleton();
-        bind(AirlineService.class).to(CatalinAirlineService.class).asEagerSingleton();
-        bind(FlightService.class).to(CatalinFlightService.class).asEagerSingleton();
-        bind(BookingService.class).to(CatalinBookingService.class).asEagerSingleton();
     }
 }
