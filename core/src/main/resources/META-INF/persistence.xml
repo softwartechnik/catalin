@@ -9,6 +9,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>de.softwartechnik.catalin.core.model.Person</class>
+        <class>de.softwartechnik.catalin.core.model.Airline</class>
 
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update" />
