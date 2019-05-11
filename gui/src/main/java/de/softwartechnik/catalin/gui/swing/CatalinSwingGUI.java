@@ -1,6 +1,6 @@
-package de.softwartachnik.catalin.gui.swing;
+package de.softwartechnik.catalin.gui.swing;
 
-import de.softwartachnik.catalin.gui.CatalinGUI;
+import de.softwartechnik.catalin.gui.CatalinGUI;
 
 public class CatalinSwingGUI implements CatalinGUI {
 

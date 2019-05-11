@@ -1,4 +1,4 @@
-package de.softwartachnik.catalin.gui.swing;
+package de.softwartechnik.catalin.gui.swing;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ class MainFrame extends JFrame {
 
     private static final String TITLE = "Flughafenverwaltung";
 
-    private MenuBar mymenu;
+    private de.softwartechnik.catalin.gui.swing.MenuBar mymenu;
 
     MainFrame(){
         init();
@@ -22,7 +22,7 @@ class MainFrame extends JFrame {
 
     }
     public void addMenu(){
-        mymenu = new MenuBar();
+        mymenu = new de.softwartechnik.catalin.gui.swing.MenuBar();
         setLayout(new BorderLayout());
         add(mymenu, BorderLayout.NORTH);
     }

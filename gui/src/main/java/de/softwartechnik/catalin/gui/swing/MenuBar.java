@@ -1,4 +1,4 @@
-package de.softwartachnik.catalin.gui.swing;
+package de.softwartechnik.catalin.gui.swing;
 
 import javax.swing.*;
 import javax.swing.border.Border;

@@ -1,4 +1,4 @@
-package de.softwartachnik.catalin.gui;
+package de.softwartechnik.catalin.gui;
 
 public interface CatalinGUI {
 

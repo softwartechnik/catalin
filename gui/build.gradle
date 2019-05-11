@@ -20,3 +20,9 @@ dependencies {
 application {
     mainClassName = 'de.softwartechnik.catalin.gui.CatalinGUIBootstrap'
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'de.softwartechnik.catalin.gui.CatalinGUIBootstrap'
+    }
+}

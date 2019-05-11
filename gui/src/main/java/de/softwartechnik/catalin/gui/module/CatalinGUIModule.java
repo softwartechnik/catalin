@@ -1,9 +1,8 @@
-package de.softwartachnik.catalin.gui.module;
+package de.softwartechnik.catalin.gui.module;
 
 import com.google.inject.AbstractModule;
-import de.softwartachnik.catalin.gui.CatalinGUI;
-import de.softwartachnik.catalin.gui.CatalinGUIBootstrap;
-import de.softwartachnik.catalin.gui.swing.CatalinSwingGUI;
+import de.softwartechnik.catalin.gui.CatalinGUI;
+import de.softwartechnik.catalin.gui.swing.CatalinSwingGUI;
 import de.softwartechnik.catalin.core.config.CatalinCoreConfig;
 import de.softwartechnik.catalin.core.module.CatalinCoreModule;
 
