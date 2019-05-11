@@ -17,11 +17,6 @@ public class PersonJPARepository extends AbstractJPARepository<Person> implement
      */
     private static final Class<Person> ENTITY_CLAZZ = Person.class;
 
-    /**
-     * Create a new person jpa repository.
-     *
-     * @param entityManager The jpa entity manager.
-     */
     @Inject
     public PersonJPARepository(Provider<EntityManager> entityManager) {
         super(ENTITY_CLAZZ, entityManager);

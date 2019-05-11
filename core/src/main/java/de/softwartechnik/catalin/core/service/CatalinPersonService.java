@@ -5,6 +5,7 @@ import de.softwartechnik.catalin.core.repository.PersonRepository;
 
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.List;
 
 public class CatalinPersonService implements PersonService {
 
@@ -33,5 +34,11 @@ public class CatalinPersonService implements PersonService {
 
         personRepository.remove(person);
         return person;
+    }
+
+    @Override
+    public List<Person> getPersons() {
+
+        return personRepository.findAll();
     }
 }

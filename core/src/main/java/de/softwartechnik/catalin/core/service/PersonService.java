@@ -3,6 +3,7 @@ package de.softwartechnik.catalin.core.service;
 import de.softwartechnik.catalin.core.model.Person;
 
 import java.util.Date;
+import java.util.List;
 
 public interface PersonService {
 
@@ -32,4 +33,11 @@ public interface PersonService {
      * @return The deleted person.
      */
     Person removePerson(Person person);
+
+    /**
+     * Get all persons.
+     *
+     * @return The persons.
+     */
+    List<Person> getPersons();
 }
