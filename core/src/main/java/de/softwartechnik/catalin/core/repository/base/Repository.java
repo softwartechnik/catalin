@@ -1,5 +1,7 @@
 package de.softwartechnik.catalin.core.repository.base;
 
+import de.softwartechnik.catalin.core.model.CatalinModel;
+
 import java.util.List;
 
 /**
@@ -7,7 +9,7 @@ import java.util.List;
  *
  * @param <EntityType> The type of the entity.
  */
-public interface Repository<EntityType> {
+public interface Repository<EntityType extends CatalinModel> {
 
     /**
      * Save the given entity.

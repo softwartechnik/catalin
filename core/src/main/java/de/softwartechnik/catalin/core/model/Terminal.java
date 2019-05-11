@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Terminal {
+public class Terminal implements CatalinModel {
 
     public static final String TABLE_NAME = "terminals";
 

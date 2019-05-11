@@ -1,5 +1,6 @@
 package de.softwartechnik.catalin.core.repository.jpa;
 
+import de.softwartechnik.catalin.core.model.CatalinModel;
 import de.softwartechnik.catalin.core.repository.base.AbstractRepository;
 
 import javax.inject.Provider;
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @param <EntityType> The generic type of the entity.
  */
-public abstract class AbstractJPARepository<EntityType> extends AbstractRepository<EntityType> {
+public abstract class AbstractJPARepository<EntityType extends CatalinModel> extends AbstractRepository<EntityType> {
 
     /**
      * The JPA entity manager.

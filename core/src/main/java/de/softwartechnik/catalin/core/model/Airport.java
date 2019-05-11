@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Airport {
+public class Airport implements CatalinModel {
 
     public static final String TABLE_NAME = "airports";
 

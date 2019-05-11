@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Person {
+public class Person implements CatalinModel {
 
     public static final String TABLE_NAME = "persons";
 

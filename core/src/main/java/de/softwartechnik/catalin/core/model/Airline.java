@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Airline {
+public class Airline implements CatalinModel {
 
     public static final String TABLE_NAME = "airlines";
 

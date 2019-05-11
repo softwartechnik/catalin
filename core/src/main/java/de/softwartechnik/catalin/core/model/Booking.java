@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Booking {
+public class Booking implements CatalinModel {
 
     public static final String TABLE_NAME = "bookings";
 
