@@ -27,11 +27,7 @@ public class Plane {
 
     private String name;
 
-    @ManyToOne
-    private Airline airline;
-
-    public Plane(String name, Airline airline) {
+    public Plane(String name) {
         this.name = name;
-        this.airline = airline;
     }
 }

@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Table(name = Airline.TABLE_NAME)
 @Entity(name = "airline")
@@ -29,7 +32,11 @@ public class Airline {
      */
     private String name;
 
-    public Airline(String name) {
+    @OneToMany
+    private List<Plane> planes;
+
+    public Airline(String name, List<Plane> planes) {
         this.name = name;
+        this.planes = planes;
     }
 }

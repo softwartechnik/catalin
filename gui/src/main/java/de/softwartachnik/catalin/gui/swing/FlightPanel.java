@@ -23,20 +23,9 @@ class FlightPanel extends JPanel {
         buildPanel();
     }
 
-    //build Layout and Panels
     private void buildPanel() {
 
-        /**
-         * Das muss eigentlich irgendwo aus der Fachlogik/Datenhaltung geladen werden
-         * PLATZHALTER
-         */
-        String[][] items = new String[][]
-                {{"1244", "02", "...", "..."}, {"1256", "07", "...", "..."}, {"1278", "03", "...", "..."}, {"1355", "02", "...", "..."},
-                        {"1356", "07", "...", "..."}, {"1378", "01", "...", "..."}, {"1456", "04", "...", "..."}, {"1470", "01", "...", "..."},
-                        {"1500", "02", "...", "..."}
-                };
-        String[] columns = new String[]{"ID", "Flugzeug ID", "...", "Weitere Spalten"};
-        //*************************************************************************************
+        String[] columns = new String[]{"ID", "Titel", "Start", "Ziel", "Flugzeug"};
 
         this.setLayout(new BorderLayout());
         JLabel lab = new JLabel(COPYRIGHT);
@@ -72,7 +61,7 @@ class FlightPanel extends JPanel {
         optionPanel.add(buttons);
         optionPanel.add(filter);
         optionPanel.add(check);
-        add(new TablePanel(columns, items), BorderLayout.CENTER);
+        add(new TablePanel(columns, new String[0][0]), BorderLayout.CENTER);
         add(optionPanel, BorderLayout.EAST);
         add(southPanel, BorderLayout.SOUTH);
     }
