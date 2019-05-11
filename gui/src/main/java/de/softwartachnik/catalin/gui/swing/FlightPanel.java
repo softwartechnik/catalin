@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class FlightPanel extends JPanel{
 
+    private static final String COPYRIGHT = "Copyright 2019 SoftWarTechnik";
+
     public static final int COLUMNS = 15;
     public static final String SEARCH = "Suche: ";
     public static final String FILTERCRIT1 = "Filterkriterium 1";
@@ -37,7 +39,7 @@ public class FlightPanel extends JPanel{
        //*************************************************************************************
 
        this.setLayout(new BorderLayout());
-       JLabel lab = new JLabel("Hier könnte Versionsnummer/Copyright stehen");
+       JLabel lab = new JLabel(COPYRIGHT);
        JLabel lab2 = new JLabel("...oder ein Logo?");
 
        JPanel southPanel = new JPanel(new FlowLayout());
