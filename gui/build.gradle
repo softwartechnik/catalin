@@ -1,5 +1,4 @@
 plugins {
-    id 'application'
     id 'java'
 }
 
@@ -17,12 +16,12 @@ dependencies {
     compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
 }
 
-application {
-    mainClassName = 'de.softwartechnik.catalin.gui.CatalinGUIBootstrap'
-}
-
 jar {
     manifest {
-        attributes 'Main-Class': 'de.softwartechnik.catalin.gui.CatalinGUIBootstrap'
+        attributes "Main-Class": "de.softwartechnik.catalin.gui.CatalinGUIBootstrap"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
