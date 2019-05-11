@@ -4,7 +4,10 @@ import de.softwartechnik.catalin.core.repository.base.AbstractRepository;
 
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * The {@link AbstractRepository} using a JPA {@link EntityManager} for persistence.
@@ -29,12 +32,22 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
         entityManager = entityManagerProvider;
     }
 
+    /**
+     * Get the entity manager out of the provider.
+     *
+     * @return The entity manager.
+     */
+    EntityManager getEntityManager() {
+
+        return entityManager.get();
+    }
+
     @Override
     @Transactional
     public EntityType save(EntityType entity) {
 
-        entityManager.get().persist(entity);
-        entityManager.get().flush();
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
 
         return entity;
     }
@@ -42,14 +55,26 @@ public abstract class AbstractJPARepository<EntityType> extends AbstractReposito
     @Override
     public EntityType find(long entityId) {
 
-        return entityManager.get().find(getEntityClass(), entityId);
+        return getEntityManager().find(getEntityClass(), entityId);
+    }
+
+    @Override
+    public List<EntityType> findAll() {
+
+        CriteriaQuery<EntityType> query = getEntityManager()
+                .getCriteriaBuilder()
+                .createQuery(getEntityClass());
+        Root<EntityType> entityTypeRoot = query.from(getEntityClass());
+        CriteriaQuery<EntityType> findAllQuery = query.select(entityTypeRoot);
+
+        return getEntityManager().createQuery(findAllQuery).getResultList();
     }
 
     @Override
     public void remove(EntityType entity) {
 
-        entityManager.get().getTransaction().begin();
-        entityManager.get().remove(entity);
-        entityManager.get().getTransaction().commit();
+        getEntityManager().getTransaction().begin();
+        getEntityManager().remove(entity);
+        getEntityManager().getTransaction().commit();
     }
 }

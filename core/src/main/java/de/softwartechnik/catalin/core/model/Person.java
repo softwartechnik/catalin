@@ -16,7 +16,6 @@ import java.util.Date;
 @Entity(name = "person")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Person {
 
     @Id
@@ -32,4 +31,10 @@ public class Person {
 
     @Column(name = "birthday", nullable = false)
     private Date birthday;
+
+    public Person(String firstName, String lastName, Date birthday) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+    }
 }

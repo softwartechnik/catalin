@@ -1,5 +1,7 @@
 package de.softwartechnik.catalin.core.repository.base;
 
+import java.util.List;
+
 /**
  * A simple CRUD repository.
  *
@@ -24,6 +26,13 @@ public interface Repository<EntityType> {
      * @return The entity.
      */
     EntityType find(long entityId);
+
+    /**
+     * Find all entities.
+     *
+     * @return The entities.
+     */
+    List<EntityType> findAll();
 
     /**
      * Delete an entity.
