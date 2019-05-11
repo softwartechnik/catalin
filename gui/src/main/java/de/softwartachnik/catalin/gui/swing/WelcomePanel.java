@@ -2,13 +2,12 @@ package de.softwartachnik.catalin.gui.swing;
 
 import javax.swing.*;
 
-public class WelcomePanel extends JPanel {
+class WelcomePanel extends JPanel {
 
-    public static String WELCOMETEXT = "Herzlich Willkommen";
-    JLabel welcome;
+    private static final String TEXT_WELCOME = "Herzlich Willkommen";
 
-    public WelcomePanel(){
-        welcome = new JLabel(WELCOMETEXT);
-        this.add(welcome);
+    WelcomePanel() {
+        JLabel welcome = new JLabel(TEXT_WELCOME);
+        add(welcome);
     }
 }

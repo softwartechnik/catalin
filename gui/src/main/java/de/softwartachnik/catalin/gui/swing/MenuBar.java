@@ -5,15 +5,15 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class MenuBar extends JMenuBar{
+class MenuBar extends JMenuBar {
 
-    public static final String STAFF = "Personal";
-    public static final String SCHEDULE = "Dienstpläne";
-    public static final String STAFF_OVERVIEW= "Übersicht Angestellte";
-    public static final String BOOKINGS = " Buchungen";
-    public static final String FLIGHTS = " Flüge";
+    private static final String STAFF = "Personal";
+    private static final String SCHEDULE = "Dienstpläne";
+    private static final String STAFF_OVERVIEW = "Übersicht Angestellte";
+    private static final String BOOKINGS = " Buchungen";
+    private static final String FLIGHTS = " Flüge";
 
-    public MenuBar(){
+    MenuBar() {
 
         //border with color
         Border border = new LineBorder(Color.black);
@@ -30,9 +30,8 @@ public class MenuBar extends JMenuBar{
         JMenu flights = new JMenu(FLIGHTS);
 
 
-        this.add(staff);
-        this.add(bookings);
-        this.add(flights);
+        add(staff);
+        add(bookings);
+        add(flights);
     }
-
 }
