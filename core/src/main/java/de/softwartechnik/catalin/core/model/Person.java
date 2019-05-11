@@ -1,6 +1,5 @@
 package de.softwartechnik.catalin.core.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,11 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Table(name = "persons")
+@Table(name = Person.TABLE_NAME)
 @Entity(name = "person")
 @Data
 @NoArgsConstructor
 public class Person {
+
+    public static final String TABLE_NAME = "persons";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
