@@ -10,6 +10,13 @@
 
         <class>de.softwartechnik.catalin.core.model.Person</class>
         <class>de.softwartechnik.catalin.core.model.Airline</class>
+        <class>de.softwartechnik.catalin.core.model.Airport</class>
+        <class>de.softwartechnik.catalin.core.model.Employee</class>
+        <class>de.softwartechnik.catalin.core.model.Flight</class>
+        <class>de.softwartechnik.catalin.core.model.Terminal</class>
+        <class>de.softwartechnik.catalin.core.model.Plane</class>
+        <class>de.softwartechnik.catalin.core.model.Booking</class>
+        <class>de.softwartechnik.catalin.core.model.BookingExtra</class>
 
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update" />
