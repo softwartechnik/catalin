@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Airport {
 
-    public static final String TABLE_NAME = "airlines";
+    public static final String TABLE_NAME = "airports";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +30,12 @@ public class Airport {
     @OneToMany
     private List<Terminal> terminals;
 
-    public Airport(String name, List<Terminal> terminals) {
+    @OneToMany
+    private List<Employee> employees;
+
+    public Airport(String name, List<Terminal> terminals, List<Employee> employees) {
         this.name = name;
         this.terminals = terminals;
+        this.employees = employees;
     }
 }
