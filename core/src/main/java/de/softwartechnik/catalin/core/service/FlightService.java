@@ -4,6 +4,8 @@ import de.softwartechnik.catalin.core.model.Flight;
 import de.softwartechnik.catalin.core.model.Plane;
 import de.softwartechnik.catalin.core.model.Terminal;
 
+import java.util.List;
+
 public interface FlightService {
 
     /**
@@ -16,4 +18,11 @@ public interface FlightService {
      * @return The flight.
      */
     Flight createFlight(String title, Terminal start, Terminal stop, Plane plane);
+
+    /**
+     * Get all flights.
+     *
+     * @return The flights.
+     */
+    List<Flight> getFlights();
 }

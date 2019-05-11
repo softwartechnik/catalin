@@ -6,6 +6,7 @@ import de.softwartechnik.catalin.core.model.Terminal;
 import de.softwartechnik.catalin.core.repository.FlightRepository;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class CatalinFlightService implements FlightService {
 
@@ -21,5 +22,11 @@ public class CatalinFlightService implements FlightService {
 
         Flight flight = new Flight(title, start, stop, plane);
         return flightRepository.save(flight);
+    }
+
+    @Override
+    public List<Flight> getFlights() {
+
+        return flightRepository.findAll();
     }
 }
