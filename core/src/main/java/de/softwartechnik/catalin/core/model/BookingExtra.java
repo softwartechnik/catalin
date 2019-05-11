@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Entity(name = "bookingExtra")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class BookingExtra {
 
     public static final String TABLE_NAME = "booking_extras";

@@ -1,5 +1,6 @@
 package de.softwartechnik.catalin.core.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @Entity(name = "airport")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Airport {
 
     public static final String TABLE_NAME = "airports";

@@ -18,6 +18,7 @@ import java.util.List;
 @Entity(name = "airline")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Airline {
 
     public static final String TABLE_NAME = "airlines";

@@ -20,6 +20,7 @@ import java.util.List;
 @Entity(name = "booking")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Booking {
 
     public static final String TABLE_NAME = "bookings";

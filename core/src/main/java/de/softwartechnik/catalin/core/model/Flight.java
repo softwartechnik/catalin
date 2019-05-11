@@ -1,5 +1,6 @@
 package de.softwartechnik.catalin.core.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @Entity(name = "flight")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Flight {
 
     public static final String TABLE_NAME = "flights";
