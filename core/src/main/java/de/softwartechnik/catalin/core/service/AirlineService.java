@@ -19,9 +19,10 @@ public interface AirlineService {
      * Add the given plane to the given airline.
      *
      * @param airline The airline.
-     * @param plane The plane.
+     * @param name The planes name.
+     * @return The plane.
      */
-    void addPlane(Airline airline, Plane plane);
+    Plane addPlane(Airline airline, String name);
 
     /**
      * Get the airline with the given id.

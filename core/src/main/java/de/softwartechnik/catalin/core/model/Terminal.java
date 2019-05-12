@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table(name = Terminal.TABLE_NAME)
@@ -27,7 +28,11 @@ public class Terminal implements CatalinModel {
 
     private String name;
 
-    public Terminal(String name) {
+    @ManyToOne
+    private Airport airport;
+
+    public Terminal(String name, Airport airport) {
         this.name = name;
+        this.airport = airport;
     }
 }

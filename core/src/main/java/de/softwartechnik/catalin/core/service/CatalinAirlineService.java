@@ -3,6 +3,7 @@ package de.softwartechnik.catalin.core.service;
 import de.softwartechnik.catalin.core.model.Airline;
 import de.softwartechnik.catalin.core.model.Plane;
 import de.softwartechnik.catalin.core.repository.AirlineRepository;
+import de.softwartechnik.catalin.core.repository.PlaneRepository;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -11,10 +12,12 @@ import java.util.List;
 public class CatalinAirlineService implements AirlineService {
 
     private final AirlineRepository airlineRepository;
+    private final PlaneRepository planeRepository;
 
     @Inject
-    public CatalinAirlineService(AirlineRepository airlineRepository) {
+    public CatalinAirlineService(AirlineRepository airlineRepository, PlaneRepository planeRepository) {
         this.airlineRepository = airlineRepository;
+        this.planeRepository = planeRepository;
     }
 
     @Override
@@ -25,12 +28,14 @@ public class CatalinAirlineService implements AirlineService {
     }
 
     @Override
-    public void addPlane(Airline airline, Plane plane) {
+    public Plane addPlane(Airline airline, String name) {
 
-        List<Plane> planes = airline.getPlanes();
-        planes.add(plane);
-
+        Plane plane = new Plane(name);
+        airline.getPlanes().add(plane);
         airlineRepository.save(airline);
+        planeRepository.save(plane);
+
+        return plane;
     }
 
     @Override

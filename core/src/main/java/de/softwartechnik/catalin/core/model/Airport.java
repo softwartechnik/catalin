@@ -1,5 +1,6 @@
 package de.softwartechnik.catalin.core.model;
 
+import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,5 +40,9 @@ public class Airport implements CatalinModel {
         this.name = name;
         this.terminals = terminals;
         this.employees = employees;
+    }
+
+    public Airport(String name) {
+        this(name, Lists.newArrayList(), Lists.newArrayList());
     }
 }

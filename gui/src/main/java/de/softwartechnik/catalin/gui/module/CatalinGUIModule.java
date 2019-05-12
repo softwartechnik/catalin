@@ -17,6 +17,8 @@ public class CatalinGUIModule extends AbstractModule {
     @Override
     protected void configure() {
 
+        bind(CatalinCoreConfig.class).toInstance(catalinCoreConfig);
+
         // Install core module
         install(new CatalinCoreModule(catalinCoreConfig));
 

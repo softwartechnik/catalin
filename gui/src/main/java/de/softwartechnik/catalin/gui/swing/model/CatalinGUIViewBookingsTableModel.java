@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class CatalinGUIViewBookingsTableModel extends AbstractListBasedTableModel<Booking> {
 
-    private static final String[] COLUMNS = { "Id", "Vorname", "Nachname", "FlugId", "Start", "Ziel", "Extras" };
+    private static final String[] COLUMNS = { "Id", "Vorname", "Nachname", "FlugId", "Start Flughafen", "Start Terminal", "Ziel Flughafen", "Ziel Terminal", "Extras" };
 
     public CatalinGUIViewBookingsTableModel(List<Booking> content) {
         super(content);
@@ -32,12 +32,18 @@ public class CatalinGUIViewBookingsTableModel extends AbstractListBasedTableMode
                 return booking.getFlight().getId();
             }
             case 4: {
-                return booking.getFlight().getSource().getName();
+                return booking.getFlight().getSource().getAirport().getName();
             }
             case 5: {
-                return booking.getFlight().getDestination().getName();
+                return booking.getFlight().getSource().getName();
             }
             case 6: {
+                return booking.getFlight().getDestination().getAirport().getName();
+            }
+            case 7: {
+                return booking.getFlight().getDestination().getName();
+            }
+            case 8: {
                 return Joiner.on(", ").join(booking.getExtras()
                         .stream()
                         .map(BookingExtra::getName)

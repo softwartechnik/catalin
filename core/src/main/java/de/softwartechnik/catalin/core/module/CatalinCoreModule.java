@@ -24,8 +24,10 @@ import de.softwartechnik.catalin.core.repository.PersonRepository;
 import de.softwartechnik.catalin.core.repository.PlaneJPARepository;
 import de.softwartechnik.catalin.core.repository.PlaneRepository;
 import de.softwartechnik.catalin.core.service.AirlineService;
+import de.softwartechnik.catalin.core.service.AirportService;
 import de.softwartechnik.catalin.core.service.BookingService;
 import de.softwartechnik.catalin.core.service.CatalinAirlineService;
+import de.softwartechnik.catalin.core.service.CatalinAirportService;
 import de.softwartechnik.catalin.core.service.CatalinBookingService;
 import de.softwartechnik.catalin.core.service.CatalinEmployeeService;
 import de.softwartechnik.catalin.core.service.CatalinFlightService;
@@ -67,5 +69,6 @@ public class CatalinCoreModule extends AbstractModule {
         bind(FlightService.class).to(CatalinFlightService.class).asEagerSingleton();
         bind(BookingService.class).to(CatalinBookingService.class).asEagerSingleton();
         bind(EmployeeService.class).to(CatalinEmployeeService.class).asEagerSingleton();
+        bind(AirportService.class).to(CatalinAirportService.class).asEagerSingleton();
     }
 }

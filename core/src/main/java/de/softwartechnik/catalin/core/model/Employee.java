@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table(name = Employee.TABLE_NAME)
@@ -28,8 +29,12 @@ public class Employee implements CatalinModel {
     private String firstName;
     private String lastName;
 
-    public Employee(String firstName, String lastName) {
+    @ManyToOne
+    private Airport airport;
+
+    public Employee(String firstName, String lastName, Airport airport) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.airport = airport;
     }
 }
