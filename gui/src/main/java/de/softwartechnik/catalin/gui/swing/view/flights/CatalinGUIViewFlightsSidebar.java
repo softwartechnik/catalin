@@ -5,17 +5,16 @@ import java.awt.*;
 
 public class CatalinGUIViewFlightsSidebar extends JPanel {
 
-    private final JButton deleteButton;
+
+    private final JPanel sidebarButtons;
 
     public CatalinGUIViewFlightsSidebar() {
 
         setLayout(new BorderLayout());
 
-        deleteButton = new JButton("Löschen");
-        add(deleteButton);
+        sidebarButtons = new CatalinGUIViewFlightsSidebarButtons();
+        add(sidebarButtons, BorderLayout.NORTH);
     }
 
-    public JButton getDeleteButton() {
-        return deleteButton;
-    }
+
 }
