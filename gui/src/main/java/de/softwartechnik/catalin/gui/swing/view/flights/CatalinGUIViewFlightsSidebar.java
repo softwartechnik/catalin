@@ -16,5 +16,7 @@ public class CatalinGUIViewFlightsSidebar extends JPanel {
         add(sidebarButtons, BorderLayout.NORTH);
     }
 
-
+    public JPanel getSidebarButtons() {
+        return sidebarButtons;
+    }
 }
