@@ -1,6 +1,7 @@
 package de.softwartechnik.catalin.gui.swing.model;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public abstract class AbstractListBasedTableModel<ContentType> extends AbstractTableModel {

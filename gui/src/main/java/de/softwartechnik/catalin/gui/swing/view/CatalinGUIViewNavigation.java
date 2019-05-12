@@ -10,6 +10,7 @@ public class CatalinGUIViewNavigation extends JMenuBar {
     private final JMenu menuEmployees = new JMenu("Angestellte");
     private final JMenu menuBookings = new JMenu("Buchungen");
     private final JMenu menuFlights = new JMenu("Flüge");
+    private final JMenu menuPersons = new JMenu("Personen");
 
     CatalinGUIViewNavigation() {
 
@@ -19,6 +20,7 @@ public class CatalinGUIViewNavigation extends JMenuBar {
         add(menuEmployees);
         add(menuBookings);
         add(menuFlights);
+        add(menuPersons);
     }
 
     public JMenu getMenuBookings() {
@@ -34,5 +36,10 @@ public class CatalinGUIViewNavigation extends JMenuBar {
     public JMenu getMenuFlights() {
 
         return menuFlights;
+    }
+
+    public JMenu getMenuPersons() {
+
+        return menuPersons;
     }
 }

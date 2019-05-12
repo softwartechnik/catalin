@@ -3,14 +3,14 @@ package de.softwartechnik.catalin.gui.swing.view;
 import de.softwartechnik.catalin.core.model.Booking;
 import de.softwartechnik.catalin.core.model.Employee;
 import de.softwartechnik.catalin.core.model.Flight;
-import de.softwartechnik.catalin.gui.swing.model.CatalinGUIViewFlightsTableModel;
+import de.softwartechnik.catalin.core.model.Person;
 import de.softwartechnik.catalin.gui.swing.view.bookings.CatalinGUIViewBookingsPanel;
 import de.softwartechnik.catalin.gui.swing.view.employees.CatalinGUIViewEmployeesPanel;
 import de.softwartechnik.catalin.gui.swing.view.flights.CatalinGUIViewFlightsPanel;
 import de.softwartechnik.catalin.gui.swing.view.overview.CatalinGUIViewOverviewPanel;
+import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,18 +76,32 @@ public class CatalinGUIView extends JFrame {
         setVisible(true);
     }
 
-    public void showFlights(List<Flight> flights) {
+    public CatalinGUIViewFlightsPanel showFlights(List<Flight> flights) {
 
         logger.log(Level.INFO, "Showing flights.");
 
         contentPane.removeAll();
-        JPanel panel = new CatalinGUIViewFlightsPanel(flights);
+        CatalinGUIViewFlightsPanel panel = new CatalinGUIViewFlightsPanel(flights);
         contentPane.add(panel);
 
         setVisible(true);
+        return panel;
     }
 
     public CatalinGUIViewNavigation getNavigation() {
         return navigation;
+    }
+
+    public CatalinGUIViewPersonsPanel showPersons(List<Person> persons) {
+
+        logger.log(Level.INFO, "Showing Persons.");
+
+        contentPane.removeAll();
+        CatalinGUIViewPersonsPanel panel = new CatalinGUIViewPersonsPanel(persons);
+        contentPane.add(panel);
+
+        setVisible(true);
+
+        return panel;
     }
 }
