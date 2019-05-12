@@ -2,42 +2,18 @@ package de.softwartechnik.catalin.gui.swing.model;
 
 import de.softwartechnik.catalin.core.model.Flight;
 
-import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-public class CatalinGUIViewFlightsTableModel extends AbstractTableModel {
+public class CatalinGUIViewFlightsTableModel extends AbstractListBasedTableModel<Flight> {
 
     private static final String[] COLUMNS = { "Id", "Titel", "Start", "Ziel", "Flugzeug" };
-    private final List<Flight> flights;
 
     public CatalinGUIViewFlightsTableModel(List<Flight> flights) {
-
-        this.flights = flights;
+        super(flights);
     }
 
     @Override
-    public int getRowCount() {
-
-        return flights.size();
-    }
-
-    @Override
-    public int getColumnCount() {
-
-        return COLUMNS.length;
-    }
-
-    @Override
-    public String getColumnName(int column) {
-
-        return COLUMNS[column];
-    }
-
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-
-        // Get flight
-        Flight flight = flights.get(rowIndex);
+    Object getEntityProperty(Flight flight, int columnIndex) {
 
         switch (columnIndex) {
             case 0: {
@@ -56,8 +32,20 @@ public class CatalinGUIViewFlightsTableModel extends AbstractTableModel {
                 return flight.getPlane().getName();
             }
             default: {
-                throw new IllegalStateException();
+                throw new IndexOutOfBoundsException();
             }
         }
+    }
+
+    @Override
+    public int getColumnCount() {
+
+        return COLUMNS.length;
+    }
+
+    @Override
+    public String getColumnName(int column) {
+
+        return COLUMNS[column];
     }
 }

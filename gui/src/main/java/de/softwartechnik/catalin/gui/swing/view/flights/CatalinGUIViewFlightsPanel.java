@@ -10,7 +10,7 @@ public class CatalinGUIViewFlightsPanel extends JPanel {
 
     public CatalinGUIViewFlightsPanel(List<Flight> flights) {
 
-        setLayout(new GridLayout(0, 1));
+        setLayout(new GridLayout(0, 2));
 
         // Add table
         JTable table = new CatalinGUIViewFlightsTable(flights);
