@@ -27,7 +27,7 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
         return personsPanel;
     }
 
-    public void setPersons(PersonsTableModel persons) {
+    public void setPersonsModel(PersonsTableModel persons) {
         personsPanel.getTable().setModel(persons);
     }
 

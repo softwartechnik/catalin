@@ -24,7 +24,7 @@ public class CatalinGUIFlightsView extends AbstractCatalinGUIView {
         return flightsPanel;
     }
 
-    public void setFlights(FlightsTableModel flights) {
+    public void setFlightsModel(FlightsTableModel flights) {
 
         flightsPanel.getTable().setModel(flights);
     }

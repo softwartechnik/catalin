@@ -23,7 +23,7 @@ public class CatalinGUIEmployeesView extends AbstractCatalinGUIView {
         return employeesPanel;
     }
 
-    public void setEmployees(EmployeesTableModel employees) {
+    public void setEmployeesModel(EmployeesTableModel employees) {
 
         employeesPanel.getEmployeesTable().setModel(employees);
     }

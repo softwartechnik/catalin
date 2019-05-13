@@ -27,7 +27,7 @@ public class CatalinGUIBookingsView extends AbstractCatalinGUIView {
         return bookingsPanel;
     }
 
-    public void setBookings(BookingsTableModel bookings) {
+    public void setBookingsModel(BookingsTableModel bookings) {
 
         rowSorter = new TableRowSorter<>(bookings);
         bookingsPanel.getBookingsTable().setModel(bookings);

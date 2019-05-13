@@ -149,7 +149,7 @@ public class CatalinGUIController {
         List<Flight> flights = flightService.getFlights();
         FlightsTableModel flightsTableModel = new FlightsTableModel(flights);
 
-        flightsView.setFlights(flightsTableModel);
+        flightsView.setFlightsModel(flightsTableModel);
 
         view.setView(flightsView);
     }
@@ -159,7 +159,7 @@ public class CatalinGUIController {
         List<Booking> bookings = bookingService.getBookings();
         BookingsTableModel bookingsTableModel = new BookingsTableModel(bookings);
 
-        bookingsView.setBookings(bookingsTableModel);
+        bookingsView.setBookingsModel(bookingsTableModel);
 
         view.setView(bookingsView);
     }
@@ -169,7 +169,7 @@ public class CatalinGUIController {
         List<Employee> employees = employeeService.getEmployees();
         EmployeesTableModel employeesTableModel = new EmployeesTableModel(employees);
 
-        employeesView.setEmployees(employeesTableModel);
+        employeesView.setEmployeesModel(employeesTableModel);
 
         view.setView(employeesView);
     }
@@ -179,7 +179,7 @@ public class CatalinGUIController {
         List<Person> persons = personService.getPersons();
         PersonsTableModel personsTableModel = new PersonsTableModel(persons);
 
-        personsView.setPersons(personsTableModel);
+        personsView.setPersonsModel(personsTableModel);
         view.setView(personsView);
     }
 }
