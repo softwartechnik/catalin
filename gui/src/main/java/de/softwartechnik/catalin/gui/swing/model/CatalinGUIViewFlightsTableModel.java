@@ -8,8 +8,8 @@ public class CatalinGUIViewFlightsTableModel extends AbstractListBasedTableModel
 
     private static final String[] COLUMNS = { "Id", "Titel", "Start", "Ziel", "Flugzeug" };
 
-    public CatalinGUIViewFlightsTableModel(List<Flight> flights) {
-        super(flights);
+    public CatalinGUIViewFlightsTableModel() {
+        super();
     }
 
     @Override

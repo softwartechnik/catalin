@@ -11,8 +11,8 @@ public class CatalinGUIViewBookingsTableModel extends AbstractListBasedTableMode
 
     private static final String[] COLUMNS = { "Id", "Vorname", "Nachname", "FlugId", "Start Flughafen", "Start Terminal", "Ziel Flughafen", "Ziel Terminal", "Extras" };
 
-    public CatalinGUIViewBookingsTableModel(List<Booking> content) {
-        super(content);
+    public CatalinGUIViewBookingsTableModel() {
+        super();
     }
 
     @Override

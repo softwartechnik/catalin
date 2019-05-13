@@ -2,15 +2,14 @@ package de.softwartechnik.catalin.gui.swing.model;
 
 import de.softwartechnik.catalin.core.model.Employee;
 
-import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class CatalinGUIViewEmployeesTableModel extends AbstractListBasedTableModel<Employee> {
 
     private static final String[] COLUMNS = { "Id", "Vorname", "Nachname" };
 
-    public CatalinGUIViewEmployeesTableModel(List<Employee> employees) {
-        super(employees);
+    public CatalinGUIViewEmployeesTableModel() {
+        super();
     }
 
     @Override

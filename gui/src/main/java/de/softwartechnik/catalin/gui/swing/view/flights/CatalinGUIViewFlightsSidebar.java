@@ -6,7 +6,7 @@ import java.awt.*;
 public class CatalinGUIViewFlightsSidebar extends JPanel {
 
 
-    private final JPanel sidebarButtons;
+    private final CatalinGUIViewFlightsSidebarButtons sidebarButtons;
 
     public CatalinGUIViewFlightsSidebar() {
 
@@ -16,7 +16,7 @@ public class CatalinGUIViewFlightsSidebar extends JPanel {
         add(sidebarButtons, BorderLayout.NORTH);
     }
 
-    public JPanel getSidebarButtons() {
+    public CatalinGUIViewFlightsSidebarButtons getSidebarButtons() {
         return sidebarButtons;
     }
 }

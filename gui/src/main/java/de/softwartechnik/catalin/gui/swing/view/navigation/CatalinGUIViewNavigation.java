@@ -1,8 +1,9 @@
-package de.softwartechnik.catalin.gui.swing.view;
+package de.softwartechnik.catalin.gui.swing.view.navigation;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.event.MenuListener;
 import java.awt.*;
 
 public class CatalinGUIViewNavigation extends JMenuBar {
@@ -12,7 +13,7 @@ public class CatalinGUIViewNavigation extends JMenuBar {
     private final JMenu menuFlights = new JMenu("Flüge");
     private final JMenu menuPersons = new JMenu("Personen");
 
-    CatalinGUIViewNavigation() {
+    public CatalinGUIViewNavigation() {
 
         Border border = new LineBorder(Color.BLACK);
         setBorder(border);
@@ -23,23 +24,19 @@ public class CatalinGUIViewNavigation extends JMenuBar {
         add(menuPersons);
     }
 
-    public JMenu getMenuBookings() {
-
-        return menuBookings;
+    public void setPersonsMenuListener(MenuListener menuListener) {
+        menuPersons.addMenuListener(menuListener);
     }
 
-    public JMenu getMenuEmployees() {
-
-        return menuEmployees;
+    public void setBookingsMenuListener(MenuListener menuListener) {
+        menuBookings.addMenuListener(menuListener);
     }
 
-    public JMenu getMenuFlights() {
-
-        return menuFlights;
+    public void setEmployeesMenuListener(MenuListener menuListener) {
+        menuEmployees.addMenuListener(menuListener);
     }
 
-    public JMenu getMenuPersons() {
-
-        return menuPersons;
+    public void setFlightsMenuListener(MenuListener menuListener) {
+        menuFlights.addMenuListener(menuListener);
     }
 }

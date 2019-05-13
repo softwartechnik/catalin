@@ -2,6 +2,7 @@ package de.softwartechnik.catalin.gui.swing.view.persons;
 
 import de.softwartechnik.catalin.core.model.Person;
 
+import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -11,11 +12,12 @@ public class CatalinGUIViewPersonsPanel extends JPanel {
     private final CatalinGUIViewPersonsTable table;
     private final CatalinGUIViewPersonsSidebar sidebar;
 
-    public CatalinGUIViewPersonsPanel(List<Person> persons) {
+    @Inject
+    public CatalinGUIViewPersonsPanel() {
 
         setLayout(new GridLayout(1, 2));
 
-        table = new CatalinGUIViewPersonsTable(persons);
+        table = new CatalinGUIViewPersonsTable();
         sidebar = new CatalinGUIViewPersonsSidebar();
 
         add(table);

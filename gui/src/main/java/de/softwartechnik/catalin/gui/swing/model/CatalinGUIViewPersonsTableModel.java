@@ -8,8 +8,8 @@ public class CatalinGUIViewPersonsTableModel extends AbstractListBasedTableModel
 
     private static final String[] COLUMNS = { "Id", "Vorname", "Nachname", "Geburtstag" };
 
-    public CatalinGUIViewPersonsTableModel(List<Person> content) {
-        super(content);
+    public CatalinGUIViewPersonsTableModel() {
+        super();
     }
 
     @Override
