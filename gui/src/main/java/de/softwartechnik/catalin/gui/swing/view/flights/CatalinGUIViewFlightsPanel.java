@@ -4,6 +4,7 @@ import de.softwartechnik.catalin.core.model.Flight;
 
 import javax.inject.Inject;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.List;
 
@@ -15,16 +16,16 @@ public class CatalinGUIViewFlightsPanel extends JPanel {
     @Inject
     public CatalinGUIViewFlightsPanel() {
 
-        setLayout(new GridLayout(0, 2));
+        setLayout(new BorderLayout());
 
         // Add table
         table = new CatalinGUIViewFlightsTable();
         JScrollPane scrollPane = new JScrollPane(table);
-        add(scrollPane);
+        add(scrollPane, BorderLayout.CENTER);
 
         // Add sidebar
         sidebar = new CatalinGUIViewFlightsSidebar();
-        add(sidebar);
+        add(sidebar, BorderLayout.EAST);
     }
 
     public CatalinGUIViewFlightsSidebar getSidebar() {

@@ -14,7 +14,7 @@ public class CatalinGUIViewEmployeesPanel extends JPanel {
     @Inject
     public CatalinGUIViewEmployeesPanel() {
 
-        setLayout(new GridLayout(0, 2));
+        setLayout(new GridLayout(0, 1));
 
         // Add table
         JScrollPane scrollPane = new JScrollPane(employeesTable);

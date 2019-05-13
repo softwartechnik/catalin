@@ -16,15 +16,15 @@ public class CatalinGUIViewBookingsPanel extends JPanel {
     @Inject
     public CatalinGUIViewBookingsPanel() {
 
-        setLayout(new GridLayout(0, 2));
+        setLayout(new BorderLayout());
         sidepanel = new CatalinGUIViewBookingsSidebar();
 
         // Add table
 
         JScrollPane scrollPane = new JScrollPane(bookingsTable);
-        add(scrollPane);
+        add(scrollPane, BorderLayout.CENTER);
 
-        add(sidepanel);
+        add(sidepanel, BorderLayout.EAST);
     }
 
     public CatalinGUIViewBookingsTable getBookingsTable() {
