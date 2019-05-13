@@ -29,4 +29,11 @@ public class CatalinFlightService implements FlightService {
 
         return flightRepository.findAll();
     }
+
+    @Override
+    public void cancelFlight(long id) {
+
+        Flight flight = flightRepository.find(id);
+        flightRepository.remove(flight);
+    }
 }

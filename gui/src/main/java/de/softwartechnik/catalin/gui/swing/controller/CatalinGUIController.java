@@ -116,6 +116,7 @@ public class CatalinGUIController {
 
             System.out.println("Removing flight " + flightId);
 
+            flightService.cancelFlight(flightId);
             flightsModel.removeFlight(selectedFlight);
         });
 

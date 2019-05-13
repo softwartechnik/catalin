@@ -25,4 +25,11 @@ public interface FlightService {
      * @return The flights.
      */
     List<Flight> getFlights();
+
+    /**
+     * Cancel the given flight.
+     *
+     * @param id The id.
+     */
+    void cancelFlight(long id);
 }
