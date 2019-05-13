@@ -101,8 +101,9 @@ public class CatalinGUIController {
             Date birthday = personsView.getFormBirthday();
 
             Person person = personService.createPerson(firstName, lastName, birthday);
-
             personsView.getPersonsModel().addPerson(person);
+
+            personsView.resetForm();
         });
 
         flightsView.setDeleteButtonListener(click -> {
