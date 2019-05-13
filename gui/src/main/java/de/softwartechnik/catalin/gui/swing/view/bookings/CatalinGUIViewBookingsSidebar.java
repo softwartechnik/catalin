@@ -8,14 +8,17 @@ import java.awt.*;
 public class CatalinGUIViewBookingsSidebar extends JPanel{
 
 
-    private final JPanel sidebarSearch;
+    private final CatalinGUIViewBookingsSidebarSearch sidebarSearch;
 
     public CatalinGUIViewBookingsSidebar() {
 
         setLayout(new BorderLayout());
 
-        sidebarSearch= new CatalinGUIViewBookingsSidebarSearch();
+        sidebarSearch = new CatalinGUIViewBookingsSidebarSearch();
         add(sidebarSearch, BorderLayout.NORTH);
     }
 
+    public CatalinGUIViewBookingsSidebarSearch getSidebarSearch() {
+        return sidebarSearch;
+    }
 }

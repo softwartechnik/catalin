@@ -11,7 +11,7 @@ import java.util.List;
 public class CatalinGUIViewBookingsPanel extends JPanel {
 
     private CatalinGUIViewBookingsTable bookingsTable = new CatalinGUIViewBookingsTable();
-    private JPanel sidepanel;
+    private CatalinGUIViewBookingsSidebar sidepanel;
 
     @Inject
     public CatalinGUIViewBookingsPanel() {
@@ -29,5 +29,9 @@ public class CatalinGUIViewBookingsPanel extends JPanel {
 
     public CatalinGUIViewBookingsTable getBookingsTable() {
         return bookingsTable;
+    }
+
+    public CatalinGUIViewBookingsSidebar getSidepanel() {
+        return sidepanel;
     }
 }

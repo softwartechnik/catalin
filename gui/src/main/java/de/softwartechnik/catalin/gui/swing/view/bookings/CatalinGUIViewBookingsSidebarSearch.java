@@ -19,4 +19,12 @@ public class CatalinGUIViewBookingsSidebarSearch extends JPanel {
         add(searchfield);
         add(searchbutton);
     }
+
+    public JButton getSearchbutton() {
+        return searchbutton;
+    }
+
+    public JTextField getSearchfield() {
+        return searchfield;
+    }
 }

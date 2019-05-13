@@ -4,30 +4,25 @@ import de.softwartechnik.catalin.core.model.Booking;
 import de.softwartechnik.catalin.core.model.Employee;
 import de.softwartechnik.catalin.core.model.Flight;
 import de.softwartechnik.catalin.core.model.Person;
-import de.softwartechnik.catalin.core.model.Terminal;
 import de.softwartechnik.catalin.core.service.BookingService;
 import de.softwartechnik.catalin.core.service.EmployeeService;
 import de.softwartechnik.catalin.core.service.FlightService;
 import de.softwartechnik.catalin.core.service.PersonService;
-import de.softwartechnik.catalin.gui.swing.model.CatalinGUIViewFlightsTableModel;
+import de.softwartechnik.catalin.gui.swing.model.BookingsTableModel;
+import de.softwartechnik.catalin.gui.swing.model.EmployeesTableModel;
+import de.softwartechnik.catalin.gui.swing.model.FlightsTableModel;
+import de.softwartechnik.catalin.gui.swing.model.PersonsTableModel;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIBookingsView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIEmployeesView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIFlightsView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIMainView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIPersonsView;
 import de.softwartechnik.catalin.gui.swing.view.navigation.CatalinGUIViewNavigation;
-import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
-import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsSidebar;
 
 import javax.inject.Inject;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-import javax.swing.table.AbstractTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -106,12 +101,42 @@ public class CatalinGUIController {
             Date birthday = personsView.getFormBirthday();
 
             Person person = personService.createPerson(firstName, lastName, birthday);
-            personsView.setPersons(personService.getPersons());
+
+            personsView.getPersonsModel().addPerson(person);
         });
 
         flightsView.setDeleteButtonListener(click -> {
 
-            // TODO:
+            int selectedFlight = flightsView.getSelectedFlight();
+
+            System.out.println("Removing flight in row " + selectedFlight);
+
+            FlightsTableModel flightsModel = flightsView.getFlightsModel();
+            long flightId = (long) flightsModel.getValueAt(selectedFlight, 0);
+
+            System.out.println("Removing flight " + flightId);
+
+            flightsModel.removeFlight(selectedFlight);
+        });
+
+        bookingsView.setSearchButtonListener(click -> {
+
+            String searchWord = bookingsView.getSearchWord();
+
+            RowFilter<BookingsTableModel, Object> rowFilter = new RowFilter<BookingsTableModel, Object>() {
+                @Override
+                public boolean include(Entry<? extends BookingsTableModel, ?> entry) {
+
+                    if (searchWord.isEmpty()) {
+                        return true;
+                    }
+
+                    Object value = entry.getValue(0);
+                    return value.toString().equalsIgnoreCase(searchWord);
+                }
+            };
+
+            bookingsView.filterTable(rowFilter);
         });
     }
 
@@ -122,8 +147,9 @@ public class CatalinGUIController {
     public void showFlights() {
 
         List<Flight> flights = flightService.getFlights();
+        FlightsTableModel flightsTableModel = new FlightsTableModel(flights);
 
-        flightsView.setFlights(flights);
+        flightsView.setFlights(flightsTableModel);
 
         view.setView(flightsView);
     }
@@ -131,8 +157,9 @@ public class CatalinGUIController {
     public void showBookings() {
 
         List<Booking> bookings = bookingService.getBookings();
+        BookingsTableModel bookingsTableModel = new BookingsTableModel(bookings);
 
-        bookingsView.setBookings(bookings);
+        bookingsView.setBookings(bookingsTableModel);
 
         view.setView(bookingsView);
     }
@@ -140,8 +167,9 @@ public class CatalinGUIController {
     public void showEmployees() {
 
         List<Employee> employees = employeeService.getEmployees();
+        EmployeesTableModel employeesTableModel = new EmployeesTableModel(employees);
 
-        employeesView.setEmployees(employees);
+        employeesView.setEmployees(employeesTableModel);
 
         view.setView(employeesView);
     }
@@ -149,9 +177,9 @@ public class CatalinGUIController {
     public void showPersons() {
 
         List<Person> persons = personService.getPersons();
+        PersonsTableModel personsTableModel = new PersonsTableModel(persons);
 
-        personsView.setPersons(persons);
-
+        personsView.setPersons(personsTableModel);
         view.setView(personsView);
     }
 }

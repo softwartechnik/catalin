@@ -1,6 +1,7 @@
 package de.softwartechnik.catalin.gui.swing.view;
 
 import de.softwartechnik.catalin.core.model.Person;
+import de.softwartechnik.catalin.gui.swing.model.PersonsTableModel;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
 
 import javax.inject.Inject;
@@ -26,9 +27,8 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
         return personsPanel;
     }
 
-    public void setPersons(List<Person> persons) {
-
-        personsPanel.getTable().setPersons(persons);
+    public void setPersons(PersonsTableModel persons) {
+        personsPanel.getTable().setModel(persons);
     }
 
     public void setAddButtonListener(ActionListener actionListener) {
@@ -58,5 +58,10 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
         }
 
         return null;
+    }
+
+    public PersonsTableModel getPersonsModel() {
+
+        return (PersonsTableModel) personsPanel.getTable().getModel();
     }
 }

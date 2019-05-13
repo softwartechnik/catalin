@@ -1,6 +1,7 @@
 package de.softwartechnik.catalin.gui.swing.view;
 
 import de.softwartechnik.catalin.core.model.Flight;
+import de.softwartechnik.catalin.gui.swing.model.FlightsTableModel;
 import de.softwartechnik.catalin.gui.swing.view.flights.CatalinGUIViewFlightsPanel;
 
 import javax.inject.Inject;
@@ -23,13 +24,28 @@ public class CatalinGUIFlightsView extends AbstractCatalinGUIView {
         return flightsPanel;
     }
 
-    public void setFlights(List<Flight> flights) {
+    public void setFlights(FlightsTableModel flights) {
 
-        flightsPanel.getTable().setFlights(flights);
+        flightsPanel.getTable().setModel(flights);
     }
 
     public void setDeleteButtonListener(ActionListener actionListener) {
 
         flightsPanel.getSidebar().getSidebarButtons().getDeleteButton().addActionListener(actionListener);
+    }
+
+    public FlightsTableModel getFlightsModel() {
+
+        return (FlightsTableModel) flightsPanel.getTable().getModel();
+    }
+
+    public int getSelectedFlight() {
+
+        return flightsPanel.getTable().getSelectedRow();
+    }
+
+    public void setSearchButtonListener(ActionListener actionListener) {
+
+
     }
 }
