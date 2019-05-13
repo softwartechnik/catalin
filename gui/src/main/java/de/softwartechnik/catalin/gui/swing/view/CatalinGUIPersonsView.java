@@ -44,7 +44,7 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
 
     public String getFormLastName() {
 
-        return personsPanel.getSidebar().getTextFieldFirstName().getText();
+        return personsPanel.getSidebar().getTextFieldLastName().getText();
     }
 
     public Date getFormBirthday() {

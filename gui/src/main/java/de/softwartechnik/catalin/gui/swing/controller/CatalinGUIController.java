@@ -109,12 +109,8 @@ public class CatalinGUIController {
 
             int selectedFlight = flightsView.getSelectedFlight();
 
-            System.out.println("Removing flight in row " + selectedFlight);
-
             FlightsTableModel flightsModel = flightsView.getFlightsModel();
             long flightId = (long) flightsModel.getValueAt(selectedFlight, 0);
-
-            System.out.println("Removing flight " + flightId);
 
             flightService.cancelFlight(flightId);
             flightsModel.removeFlight(selectedFlight);
