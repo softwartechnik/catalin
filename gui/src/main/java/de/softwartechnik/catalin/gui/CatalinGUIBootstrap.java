@@ -10,7 +10,7 @@ import de.softwartechnik.catalin.core.config.CatalinPersistenceMode;
 public class CatalinGUIBootstrap {
 
     private static final CatalinCoreConfig CATALIN_CORE_CONFIG = new CatalinCoreConfigBuilder()
-            .setPersistenceMode(CatalinPersistenceMode.SQL)
+            .setPersistenceMode(CatalinPersistenceMode.MAP)
             .createCatalinCoreConfig();
 
     public static void main(String[] args) {
