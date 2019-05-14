@@ -47,8 +47,10 @@ public abstract class AbstractJPARepository<EntityType extends CatalinModel> ext
     @Transactional
     public EntityType save(EntityType entity) {
 
+        getEntityManager().getTransaction().begin();
         getEntityManager().persist(entity);
         getEntityManager().flush();
+        getEntityManager().getTransaction().commit();
 
         return entity;
     }
