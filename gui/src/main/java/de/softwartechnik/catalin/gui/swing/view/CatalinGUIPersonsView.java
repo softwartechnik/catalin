@@ -1,6 +1,5 @@
 package de.softwartechnik.catalin.gui.swing.view;
 
-import de.softwartechnik.catalin.core.model.Person;
 import de.softwartechnik.catalin.gui.swing.model.PersonsTableModel;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsSidebar;
@@ -11,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
 

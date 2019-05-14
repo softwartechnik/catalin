@@ -19,6 +19,8 @@ import de.softwartechnik.catalin.core.repository.PersonJPARepository;
 import de.softwartechnik.catalin.core.repository.PersonRepository;
 import de.softwartechnik.catalin.core.repository.PlaneJPARepository;
 import de.softwartechnik.catalin.core.repository.PlaneRepository;
+import de.softwartechnik.catalin.core.repository.TerminalJPARepository;
+import de.softwartechnik.catalin.core.repository.TerminalRepository;
 import de.softwartechnik.catalin.core.service.AirlineService;
 import de.softwartechnik.catalin.core.service.CatalinAirlineService;
 import de.softwartechnik.catalin.core.service.CatalinPersonService;
@@ -43,6 +45,7 @@ public class SQLPersistenceModule extends AbstractModule {
         bind(EmployeeRepository.class).to(EmployeeJPARepository.class);
         bind(FlightRepository.class).to(FlightJPARepository.class);
         bind(PlaneRepository.class).to(PlaneJPARepository.class);
+        bind(TerminalRepository.class).to(TerminalJPARepository.class);
     }
 
     private static class HibernateInitializer {
