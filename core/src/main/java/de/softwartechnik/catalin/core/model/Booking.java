@@ -3,12 +3,16 @@ package de.softwartechnik.catalin.core.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -31,10 +35,10 @@ public class Booking implements CatalinModel {
     @ManyToOne
     private Person person;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Flight flight;
 
-    @OneToMany
+    @ManyToMany
     private List<BookingExtra> extras;
 
     public Booking(Person person, Flight flight, List<BookingExtra> extras) {

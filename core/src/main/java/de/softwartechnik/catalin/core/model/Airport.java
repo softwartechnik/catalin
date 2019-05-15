@@ -4,12 +4,15 @@ import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
@@ -31,9 +34,13 @@ public class Airport implements CatalinModel {
     private String name;
 
     @OneToMany
+    @Cascade(CascadeType.ALL)
+    @JoinColumn(name = "airport_id")
     private List<Terminal> terminals;
 
     @OneToMany
+    @Cascade(CascadeType.ALL)
+    @JoinColumn(name = "airport_id")
     private List<Employee> employees;
 
     public Airport(String name, List<Terminal> terminals, List<Employee> employees) {
