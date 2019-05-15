@@ -1,5 +1,6 @@
 package de.softwartechnik.catalin.core.service;
 
+import com.google.common.base.Preconditions;
 import de.softwartechnik.catalin.core.model.Airline;
 import de.softwartechnik.catalin.core.model.Plane;
 import de.softwartechnik.catalin.core.repository.AirlineRepository;
@@ -31,12 +32,17 @@ public class CatalinAirlineService implements AirlineService {
      */
     @Inject
     public CatalinAirlineService(AirlineRepository airlineRepository, PlaneRepository planeRepository) {
+        Preconditions.checkNotNull(airlineRepository, "airline repository should not be null.");
+        Preconditions.checkNotNull(planeRepository, "plane repository should not be null.");
+
         this.airlineRepository = airlineRepository;
         this.planeRepository = planeRepository;
     }
 
     @Override
     public Airline createAirline(String name) {
+        Preconditions.checkNotNull(name, "airline name should not be null.");
+        Preconditions.checkState(!name.isEmpty(), "airline name should not be empty.");
 
         log.atFine().log("Creating new airline named %s.", name);
 
@@ -46,6 +52,9 @@ public class CatalinAirlineService implements AirlineService {
 
     @Override
     public Plane addPlane(Airline airline, String name) {
+        Preconditions.checkNotNull(airline, "airline should not be null.");
+        Preconditions.checkNotNull(name, "airline name should not be null.");
+        Preconditions.checkState(!name.isEmpty(), "airline name should not be empty.");
 
         log.atFine().log("Adding plane named %s to airline %s", name, airline.getName());
 
@@ -67,6 +76,7 @@ public class CatalinAirlineService implements AirlineService {
 
     @Override
     public Airline removeAirline(Airline airline) {
+        Preconditions.checkNotNull(airline, "airline should not be null.");
 
         log.atFine().log("Deleting airline with id %s.", airline.getId());
 
