@@ -30,6 +30,12 @@ import javax.inject.Inject;
 
 public class SQLPersistenceModule extends AbstractModule {
 
+    private final String persistenceUnitName;
+
+    public SQLPersistenceModule(String persistenceUnitName) {
+        this.persistenceUnitName = persistenceUnitName;
+    }
+
     @Override
     protected void configure() {
 
