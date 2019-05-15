@@ -1,6 +1,8 @@
 package de.softwartechnik.catalin.core.model;
 
-public interface CatalinModel {
+import java.io.Serializable;
+
+public interface CatalinModel extends Serializable {
 
     long getId();
 
