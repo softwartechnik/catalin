@@ -8,7 +8,7 @@ public class CatalinGUIViewBookingsSidebarSearch extends JPanel {
     private JTextField searchfield;
     private JButton searchbutton;
 
-    public CatalinGUIViewBookingsSidebarSearch(){
+    public CatalinGUIViewBookingsSidebarSearch() {
 
         setLayout(new FlowLayout());
 

@@ -11,6 +11,7 @@ public interface AirlineService {
      * Create a new airline with the given name.
      *
      * @param name The name.
+     *
      * @return The airline.
      */
     Airline createAirline(String name);
@@ -19,7 +20,8 @@ public interface AirlineService {
      * Add the given plane to the given airline.
      *
      * @param airline The airline.
-     * @param name The planes name.
+     * @param name    The planes name.
+     *
      * @return The plane.
      */
     Plane addPlane(Airline airline, String name);
@@ -28,6 +30,7 @@ public interface AirlineService {
      * Get the airline with the given id.
      *
      * @param airlineId The id of the airline.
+     *
      * @return The airline.
      */
     Airline getAirline(long airlineId);
@@ -36,6 +39,7 @@ public interface AirlineService {
      * Remove the given airline.
      *
      * @param airline The airline.
+     *
      * @return The airline.
      */
     Airline removeAirline(Airline airline);

@@ -3,7 +3,6 @@ package de.softwartechnik.catalin.core.repository.map;
 import com.google.common.collect.Maps;
 import de.softwartechnik.catalin.core.model.CatalinModel;
 import de.softwartechnik.catalin.core.repository.base.AbstractRepository;
-import de.softwartechnik.catalin.core.repository.base.Repository;
 
 import java.util.ArrayList;
 import java.util.List;

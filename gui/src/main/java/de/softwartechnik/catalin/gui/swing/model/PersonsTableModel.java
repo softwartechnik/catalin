@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PersonsTableModel extends DefaultTableModel {
 
-    private static final String[] COLUMNS = { "Id", "Vorname", "Nachname", "Geburtstag" };
+    private static final String[] COLUMNS = {"Id", "Vorname", "Nachname", "Geburtstag"};
 
     public PersonsTableModel(List<Person> persons) {
 
@@ -31,6 +31,6 @@ public class PersonsTableModel extends DefaultTableModel {
 
     private Object[] convert(Person person) {
 
-        return new Object[] { person.getId(), person.getFirstName(), person.getLastName(), person.getBirthday().toString() };
+        return new Object[]{person.getId(), person.getFirstName(), person.getLastName(), person.getBirthday().toString()};
     }
 }

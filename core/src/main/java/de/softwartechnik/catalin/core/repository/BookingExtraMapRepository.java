@@ -1,6 +1,5 @@
 package de.softwartechnik.catalin.core.repository;
 
-import de.softwartechnik.catalin.core.model.Airline;
 import de.softwartechnik.catalin.core.model.BookingExtra;
 import de.softwartechnik.catalin.core.repository.map.AbstractMapRepository;
 

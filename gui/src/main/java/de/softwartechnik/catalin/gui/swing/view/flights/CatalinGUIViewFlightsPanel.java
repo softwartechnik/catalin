@@ -1,12 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.flights;
 
-import de.softwartechnik.catalin.core.model.Flight;
-
 import javax.inject.Inject;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.util.List;
 
 public class CatalinGUIViewFlightsPanel extends JPanel {
 

@@ -1,11 +1,9 @@
 package de.softwartechnik.catalin.gui.swing.view.bookings;
 
-import de.softwartechnik.catalin.gui.swing.view.flights.CatalinGUIViewFlightsSidebarButtons;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class CatalinGUIViewBookingsSidebar extends JPanel{
+public class CatalinGUIViewBookingsSidebar extends JPanel {
 
 
     private final CatalinGUIViewBookingsSidebarSearch sidebarSearch;

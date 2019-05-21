@@ -3,7 +3,6 @@ package de.softwartechnik.catalin.gui.swing.model;
 import com.google.common.base.Joiner;
 import de.softwartechnik.catalin.core.model.Booking;
 import de.softwartechnik.catalin.core.model.BookingExtra;
-import de.softwartechnik.catalin.core.model.Person;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class BookingsTableModel extends DefaultTableModel {
 
-    private static final String[] COLUMNS = { "Id", "Vorname", "Nachname", "FlugId", "Start Flughafen", "Start Terminal", "Ziel Flughafen", "Ziel Terminal", "Extras" };
+    private static final String[] COLUMNS = {"Id", "Vorname", "Nachname", "FlugId", "Start Flughafen", "Start Terminal", "Ziel Flughafen", "Ziel Terminal", "Extras"};
 
     public BookingsTableModel(List<Booking> bookings) {
         for (String column : COLUMNS) {
@@ -34,7 +33,7 @@ public class BookingsTableModel extends DefaultTableModel {
 
     private Object[] convert(Booking booking) {
 
-        return new Object[] {
+        return new Object[]{
                 booking.getId(),
                 booking.getPerson().getFirstName(),
                 booking.getPerson().getLastName(),

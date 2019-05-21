@@ -14,6 +14,7 @@ public interface BookingService {
      *
      * @param person The person.
      * @param flight The flight.
+     *
      * @return The booking.
      */
     Booking bookFlight(Person person, Flight flight, List<BookingExtra> extras);

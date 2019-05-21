@@ -10,6 +10,7 @@ public interface EmployeeService {
      * Get the employee with the given ID.
      *
      * @param id The id.
+     *
      * @return The employee.
      */
     Employee getEmployee(long id);

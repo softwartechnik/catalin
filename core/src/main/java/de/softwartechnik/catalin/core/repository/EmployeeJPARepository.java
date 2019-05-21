@@ -1,7 +1,6 @@
 package de.softwartechnik.catalin.core.repository;
 
 import de.softwartechnik.catalin.core.model.Employee;
-import de.softwartechnik.catalin.core.model.Person;
 import de.softwartechnik.catalin.core.repository.jpa.AbstractJPARepository;
 
 import javax.inject.Inject;

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class EmployeesTableModel extends DefaultTableModel {
 
-    private static final String[] COLUMNS = { "Id", "Vorname", "Nachname" };
+    private static final String[] COLUMNS = {"Id", "Vorname", "Nachname"};
 
     public EmployeesTableModel(List<Employee> employees) {
 
@@ -28,6 +28,6 @@ public class EmployeesTableModel extends DefaultTableModel {
 
     private Object[] convert(Employee employee) {
 
-        return new Object[] { employee.getId(), employee.getFirstName(), employee.getLastName() };
+        return new Object[]{employee.getId(), employee.getFirstName(), employee.getLastName()};
     }
 }

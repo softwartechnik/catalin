@@ -64,8 +64,14 @@ public class CatalinGUIController {
             public void menuSelected(MenuEvent e) {
                 showPersons();
             }
-            @Override public void menuDeselected(MenuEvent e) { }
-            @Override public void menuCanceled(MenuEvent e) { }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+            }
         });
 
         navigation.setBookingsMenuListener(new MenuListener() {
@@ -73,8 +79,14 @@ public class CatalinGUIController {
             public void menuSelected(MenuEvent e) {
                 showBookings();
             }
-            @Override public void menuDeselected(MenuEvent e) { }
-            @Override public void menuCanceled(MenuEvent e) { }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+            }
         });
 
         navigation.setEmployeesMenuListener(new MenuListener() {
@@ -82,8 +94,14 @@ public class CatalinGUIController {
             public void menuSelected(MenuEvent e) {
                 showEmployees();
             }
-            @Override public void menuDeselected(MenuEvent e) { }
-            @Override public void menuCanceled(MenuEvent e) { }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+            }
         });
 
         navigation.setFlightsMenuListener(new MenuListener() {
@@ -91,8 +109,14 @@ public class CatalinGUIController {
             public void menuSelected(MenuEvent e) {
                 showFlights();
             }
-            @Override public void menuDeselected(MenuEvent e) { }
-            @Override public void menuCanceled(MenuEvent e) { }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {
+            }
+
+            @Override
+            public void menuCanceled(MenuEvent e) {
+            }
         });
 
         personsView.setAddButtonListener(click -> {

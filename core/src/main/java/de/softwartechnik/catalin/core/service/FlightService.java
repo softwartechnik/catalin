@@ -13,8 +13,9 @@ public interface FlightService {
      *
      * @param title The title.
      * @param start The start.
-     * @param stop The stop.
+     * @param stop  The stop.
      * @param plane The plane.
+     *
      * @return The flight.
      */
     Flight createFlight(String title, Terminal start, Terminal stop, Plane plane);

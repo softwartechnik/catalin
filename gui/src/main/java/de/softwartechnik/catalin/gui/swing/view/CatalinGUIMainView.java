@@ -9,11 +9,9 @@ import java.util.logging.Logger;
 public class CatalinGUIMainView extends JFrame {
 
     private static final String TITLE = "Catalin Flughafenverwaltung";
-
-    private Logger logger = Logger.getLogger(CatalinGUIMainView.TITLE);
-
     private final CatalinGUIViewNavigation navigation;
     private final JPanel contentPane;
+    private Logger logger = Logger.getLogger(CatalinGUIMainView.TITLE);
 
     public CatalinGUIMainView() {
 

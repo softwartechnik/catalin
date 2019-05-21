@@ -25,7 +25,7 @@ public abstract class AbstractJPARepository<EntityType extends CatalinModel> ext
     /**
      * Create a new repository by the managed entities class and the JPA entity manager.
      *
-     * @param entityClazz   The class of the managed entity.
+     * @param entityClazz           The class of the managed entity.
      * @param entityManagerProvider The JPA entity manager provider.
      */
     public AbstractJPARepository(Class<EntityType> entityClazz, Provider<EntityManager> entityManagerProvider) {

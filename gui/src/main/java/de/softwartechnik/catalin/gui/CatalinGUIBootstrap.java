@@ -2,10 +2,10 @@ package de.softwartechnik.catalin.gui;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.softwartechnik.catalin.gui.module.CatalinGUIModule;
 import de.softwartechnik.catalin.core.config.CatalinCoreConfig;
 import de.softwartechnik.catalin.core.config.CatalinCoreConfigBuilder;
 import de.softwartechnik.catalin.core.config.CatalinPersistenceMode;
+import de.softwartechnik.catalin.gui.module.CatalinGUIModule;
 
 public class CatalinGUIBootstrap {
 

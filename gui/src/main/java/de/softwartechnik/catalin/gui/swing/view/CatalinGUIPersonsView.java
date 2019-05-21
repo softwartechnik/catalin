@@ -26,10 +26,6 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
         return personsPanel;
     }
 
-    public void setPersonsModel(PersonsTableModel persons) {
-        personsPanel.getTable().setModel(persons);
-    }
-
     public void setAddButtonListener(ActionListener actionListener) {
 
         JButton buttonAdd = personsPanel.getSidebar().getButtonAdd();
@@ -62,6 +58,10 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
     public PersonsTableModel getPersonsModel() {
 
         return (PersonsTableModel) personsPanel.getTable().getModel();
+    }
+
+    public void setPersonsModel(PersonsTableModel persons) {
+        personsPanel.getTable().setModel(persons);
     }
 
     public void resetForm() {

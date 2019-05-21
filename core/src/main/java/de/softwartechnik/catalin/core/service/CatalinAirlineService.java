@@ -28,7 +28,7 @@ public class CatalinAirlineService implements AirlineService {
      * Create a new air line service by the underlying repositories.
      *
      * @param airlineRepository The air line repository.
-     * @param planeRepository The plane repository.
+     * @param planeRepository   The plane repository.
      */
     @Inject
     public CatalinAirlineService(AirlineRepository airlineRepository, PlaneRepository planeRepository) {

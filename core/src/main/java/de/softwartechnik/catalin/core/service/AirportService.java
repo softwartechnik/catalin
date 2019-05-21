@@ -12,6 +12,7 @@ public interface AirportService {
      * Get the airport with the given id.
      *
      * @param id The id.
+     *
      * @return The airport.
      */
     Airport getAirport(long id);
@@ -27,7 +28,8 @@ public interface AirportService {
      * Add a terminal to the given airport.
      *
      * @param airport The airport.
-     * @param name The name of the terminal
+     * @param name    The name of the terminal
+     *
      * @return The terminal.
      */
     Terminal addTerminal(Airport airport, String name);
@@ -36,7 +38,8 @@ public interface AirportService {
      * Add a new employee to this airport.
      *
      * @param firstName The first name of the employee.
-     * @param lastName The last name of the employee.
+     * @param lastName  The last name of the employee.
+     *
      * @return The employee.
      */
     Employee addEmployee(Airport airport, String firstName, String lastName);
@@ -45,6 +48,7 @@ public interface AirportService {
      * Create an airport with the given name.
      *
      * @param name The name.
+     *
      * @return The airport.
      */
     Airport createAirport(String name);

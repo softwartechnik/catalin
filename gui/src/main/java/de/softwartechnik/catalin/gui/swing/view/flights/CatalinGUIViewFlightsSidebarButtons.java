@@ -14,6 +14,7 @@ public class CatalinGUIViewFlightsSidebarButtons extends JPanel {
         deleteButton = new JButton("Löschen");
         add(deleteButton);
     }
+
     public JButton getDeleteButton() {
         return deleteButton;
     }

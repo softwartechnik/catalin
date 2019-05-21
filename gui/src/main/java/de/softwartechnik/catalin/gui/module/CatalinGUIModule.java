@@ -2,10 +2,10 @@ package de.softwartechnik.catalin.gui.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import de.softwartechnik.catalin.gui.CatalinGUI;
-import de.softwartechnik.catalin.gui.swing.CatalinSwingGUI;
 import de.softwartechnik.catalin.core.config.CatalinCoreConfig;
 import de.softwartechnik.catalin.core.module.CatalinCoreModule;
+import de.softwartechnik.catalin.gui.CatalinGUI;
+import de.softwartechnik.catalin.gui.swing.CatalinSwingGUI;
 
 import javax.inject.Named;
 import javax.inject.Singleton;

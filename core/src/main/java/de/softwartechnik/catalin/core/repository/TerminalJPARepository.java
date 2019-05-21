@@ -1,6 +1,5 @@
 package de.softwartechnik.catalin.core.repository;
 
-import de.softwartechnik.catalin.core.model.Employee;
 import de.softwartechnik.catalin.core.model.Terminal;
 import de.softwartechnik.catalin.core.repository.jpa.AbstractJPARepository;
 

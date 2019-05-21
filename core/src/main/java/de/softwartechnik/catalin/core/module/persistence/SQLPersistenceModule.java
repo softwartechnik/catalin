@@ -21,10 +21,6 @@ import de.softwartechnik.catalin.core.repository.PlaneJPARepository;
 import de.softwartechnik.catalin.core.repository.PlaneRepository;
 import de.softwartechnik.catalin.core.repository.TerminalJPARepository;
 import de.softwartechnik.catalin.core.repository.TerminalRepository;
-import de.softwartechnik.catalin.core.service.AirlineService;
-import de.softwartechnik.catalin.core.service.CatalinAirlineService;
-import de.softwartechnik.catalin.core.service.CatalinPersonService;
-import de.softwartechnik.catalin.core.service.PersonService;
 
 import javax.inject.Inject;
 

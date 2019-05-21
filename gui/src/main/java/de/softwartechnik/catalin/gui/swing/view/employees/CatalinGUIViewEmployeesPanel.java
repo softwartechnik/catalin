@@ -1,11 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.employees;
 
-import de.softwartechnik.catalin.core.model.Employee;
-
 import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class CatalinGUIViewEmployeesPanel extends JPanel {
 

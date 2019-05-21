@@ -1,12 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.bookings;
 
-import de.softwartechnik.catalin.core.model.Booking;
-import de.softwartechnik.catalin.gui.swing.view.employees.CatalinGUIViewEmployeesTable;
-
 import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class CatalinGUIViewBookingsPanel extends JPanel {
 

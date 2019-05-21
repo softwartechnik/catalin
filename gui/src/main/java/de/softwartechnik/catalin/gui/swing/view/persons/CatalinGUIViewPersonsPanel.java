@@ -1,11 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.persons;
 
-import de.softwartechnik.catalin.core.model.Person;
-
 import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class CatalinGUIViewPersonsPanel extends JPanel {
 

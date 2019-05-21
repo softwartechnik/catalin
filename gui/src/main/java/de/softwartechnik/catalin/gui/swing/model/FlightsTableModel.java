@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FlightsTableModel extends DefaultTableModel {
 
-    private static final String[] COLUMNS = { "Id", "Titel", "Start", "Ziel", "Flugzeug" };
+    private static final String[] COLUMNS = {"Id", "Titel", "Start", "Ziel", "Flugzeug"};
 
     public FlightsTableModel(List<Flight> flights) {
 
@@ -30,6 +30,6 @@ public class FlightsTableModel extends DefaultTableModel {
 
     private Object[] convert(Flight flight) {
 
-        return new Object[] { flight.getId(), flight.getTitle(), flight.getSource().getName(), flight.getDestination().getName(), flight.getPlane().getName() };
+        return new Object[]{flight.getId(), flight.getTitle(), flight.getSource().getName(), flight.getDestination().getName(), flight.getPlane().getName()};
     }
 }
