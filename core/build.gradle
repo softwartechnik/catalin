@@ -37,7 +37,7 @@ dependencies {
      * SQLITE
      */
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.21.0.1'
-    compile group: 'org.hibernate.dialect', name: 'sqlite-dialect', version: '0.1.0'
+    compile group: 'com.zsoltfabok', name: 'sqlite-dialect', version: '1.0'
 
     compile group: 'com.google.inject.extensions', name: 'guice-persist', version: '4.2.2'
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
