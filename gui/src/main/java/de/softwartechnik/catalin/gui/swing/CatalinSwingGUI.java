@@ -47,7 +47,8 @@ public class CatalinSwingGUI implements CatalinGUI {
 
     @Override
     public void initialize() {
-        if (catalinCoreConfig.getPersistenceMode() == CatalinPersistenceMode.SQL) {
+        CatalinPersistenceMode persistenceMode = catalinCoreConfig.getPersistenceMode();
+        if (persistenceMode == CatalinPersistenceMode.SQL || persistenceMode == CatalinPersistenceMode.MAP) {
             initMocks();
         }
 
