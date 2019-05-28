@@ -14,9 +14,9 @@ public class CatalinGUIBootstrap {
             .createCatalinCoreConfig();
 
     public static void main(String[] args) {
-        Injector injector = Guice.createInjector(new CatalinGUIModule(CATALIN_CORE_CONFIG));
-        CatalinGUI catalinGUI = injector.getInstance(CatalinGUI.class);
+        CatalinGUIFactory factory = new CatalinGuiceGUIFactory();
 
+        CatalinGUI catalinGUI = factory.createCatalinGUI(CATALIN_CORE_CONFIG, CatalinGUIs.SWING);
         catalinGUI.initialize();
     }
 }
