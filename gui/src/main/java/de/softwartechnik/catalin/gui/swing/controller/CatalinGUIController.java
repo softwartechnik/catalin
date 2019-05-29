@@ -145,20 +145,9 @@ public class CatalinGUIController {
 
             String searchWord = bookingsView.getSearchWord();
 
-            RowFilter<BookingsTableModel, Object> rowFilter = new RowFilter<BookingsTableModel, Object>() {
-                @Override
-                public boolean include(Entry<? extends BookingsTableModel, ?> entry) {
+            CatalinRowFilter rf = new CatalinRowFilter();
 
-                    if (searchWord.isEmpty()) {
-                        return true;
-                    }
-
-                    Object value = entry.getValue(0);
-                    return value.toString().equalsIgnoreCase(searchWord);
-                }
-            };
-
-            bookingsView.filterTable(rowFilter);
+            bookingsView.filterTable(rf.getCatalinRowFilter(searchWord));
         });
     }
 
