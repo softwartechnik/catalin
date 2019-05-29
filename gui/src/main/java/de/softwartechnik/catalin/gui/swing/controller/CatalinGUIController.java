@@ -145,9 +145,9 @@ public class CatalinGUIController {
 
             String searchWord = bookingsView.getSearchWord();
 
-            CatalinRowFilter rf = new CatalinRowFilter();
+            RowFilter rowFilter = new CatalinRowFilter(searchWord);
 
-            bookingsView.filterTable(rf.getCatalinRowFilter(searchWord));
+            bookingsView.filterTable(rowFilter);
         });
     }
 
