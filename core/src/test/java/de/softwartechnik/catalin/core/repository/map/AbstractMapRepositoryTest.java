@@ -75,10 +75,17 @@ class AbstractMapRepositoryTest {
         CatalinModel[] models = {TEST_MODEL_1,TEST_MODEL_2,TEST_MODEL_3};
         assertEquals(TEST_MODEL_COUNT, resList.size());
 
+        //ArrayEquals prüft auf Gleichheit der Reihenfolge...das ist theoretisch nicht nötig bei unserem Repository
         assertArrayEquals(models, resList.toArray());
     }
 
     @Test
     void remove() {
+        myMapRep.remove(TEST_MODEL_1);
+
+        assertNull(myMapRep.find(TEST_MODEL_1.getId()));
+        assertEquals(TEST_MODEL_COUNT -1, storage.size());
     }
+
+
 }
