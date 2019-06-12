@@ -11,4 +11,9 @@ public class CatalinGUIViewFlightsTable extends JTable {
         getTableHeader().setReorderingAllowed(true);
         getTableHeader().setResizingAllowed(true);
     }
+
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
 }
