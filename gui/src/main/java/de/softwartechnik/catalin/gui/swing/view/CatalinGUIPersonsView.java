@@ -32,6 +32,11 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
         buttonAdd.addActionListener(actionListener);
     }
 
+    public void setEditButtonListener(ActionListener actionListener) {
+        JButton buttonEdit = personsPanel.getSidebar().getButtonEdit();
+        buttonEdit.addActionListener(actionListener);
+    }
+
     public String getFormFirstName() {
 
         return personsPanel.getSidebar().getTextFieldFirstName().getText();

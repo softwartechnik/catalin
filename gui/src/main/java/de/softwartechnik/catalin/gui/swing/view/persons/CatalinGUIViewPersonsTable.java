@@ -12,8 +12,7 @@ public class CatalinGUIViewPersonsTable extends JTable{
 
         getTableHeader().setReorderingAllowed(true);
         getTableHeader().setResizingAllowed(true);
-
-
+        setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     @Override
@@ -22,3 +21,4 @@ public class CatalinGUIViewPersonsTable extends JTable{
     }
 
 }
+

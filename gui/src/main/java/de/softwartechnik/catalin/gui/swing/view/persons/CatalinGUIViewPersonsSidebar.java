@@ -11,6 +11,7 @@ public class CatalinGUIViewPersonsSidebar extends JPanel {
     private final JFormattedTextField textFieldDate;
 
     private final JButton buttonAdd;
+    private final JButton buttonEdit;
 
     public CatalinGUIViewPersonsSidebar() {
 
@@ -19,12 +20,16 @@ public class CatalinGUIViewPersonsSidebar extends JPanel {
         textFieldDate = new JFormattedTextField(new SimpleDateFormat());
         textFieldDate.setValue(new Date());
         buttonAdd = new JButton("Speichern");
+        buttonEdit = new JButton("Ändern");
 
         add(textFieldFirstName);
         add(textFieldLastName);
         add(textFieldDate);
         add(buttonAdd);
+        add(buttonEdit);
     }
+
+    public JButton getButtonEdit() { return buttonEdit;}
 
     public JButton getButtonAdd() {
         return buttonAdd;

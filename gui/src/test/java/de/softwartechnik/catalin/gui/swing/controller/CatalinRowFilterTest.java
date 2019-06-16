@@ -12,16 +12,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CatalinRowFilterTest {
 
-    //private static final String SEARCH = "3";
+
+    private static final String SEARCH = "3";
 
     CatalinRowFilter rowFilter;
 
+
     @BeforeEach
     void setUp() {
+        rowFilter = new CatalinRowFilter(SEARCH);
     }
 
 
     @Test
     void include() {
+
     }
 }

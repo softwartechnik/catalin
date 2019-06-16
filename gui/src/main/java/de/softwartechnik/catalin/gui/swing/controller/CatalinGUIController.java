@@ -18,6 +18,8 @@ import de.softwartechnik.catalin.gui.swing.view.CatalinGUIFlightsView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIMainView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIPersonsView;
 import de.softwartechnik.catalin.gui.swing.view.navigation.CatalinGUIViewNavigation;
+import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsDetails;
+import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsTable;
 
 import javax.inject.Inject;
@@ -26,10 +28,9 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.xml.transform.sax.SAXSource;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.Date;
 import java.util.List;
 
@@ -136,6 +137,30 @@ public class CatalinGUIController {
 
             personsView.resetForm();
         });
+
+        personsView.setEditButtonListener(click -> {
+            CatalinGUIViewPersonsPanel myPanel = (CatalinGUIViewPersonsPanel)personsView.getComponent();
+            if(myPanel.getTable().getSelectedRow() != -1){
+
+                /*
+                Nur zum Ausprobieren, hier muss die ausgewählte Person eingefügt werden,
+                oder direkt in CatalinGUIViewPersonsDetails injected werden.
+                 */
+                Person meinePerson = new Person();
+                meinePerson.setFirstName("Mein Vorname");
+                meinePerson.setLastName("Mein Nachname");
+                meinePerson.setBirthday(new Date());
+                CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(meinePerson);
+
+                det.getSave().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //Hier die Änderungen speichern
+                    }
+                });
+            }
+        });
+
 
         flightsView.setDeleteButtonListener(click -> {
 
