@@ -4,7 +4,7 @@ import de.softwartechnik.catalin.gui.swing.model.BookingsTableModel;
 
 import javax.swing.*;
 
-public class CatalinRowFilter<BookingsTableModel, Object> extends RowFilter {
+public class CatalinRowFilter<BookingsTableModel, Object> extends RowFilter<BookingsTableModel, Object> {
 
     private String searchWord;
 
@@ -21,5 +21,5 @@ public class CatalinRowFilter<BookingsTableModel, Object> extends RowFilter {
         Object value = (Object) entry.getValue(0);
         return value.toString().equalsIgnoreCase(searchWord);
     }
-    }
+}
 

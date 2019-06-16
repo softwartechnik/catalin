@@ -2,8 +2,10 @@ package de.softwartechnik.catalin.gui.swing.view.persons;
 
 import javax.inject.Inject;
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class CatalinGUIViewPersonsTable extends JTable {
+public class CatalinGUIViewPersonsTable extends JTable{
 
     @Inject
     public CatalinGUIViewPersonsTable() {
@@ -18,4 +20,5 @@ public class CatalinGUIViewPersonsTable extends JTable {
     public boolean isCellEditable(int row, int column) {
         return false;
     }
+
 }

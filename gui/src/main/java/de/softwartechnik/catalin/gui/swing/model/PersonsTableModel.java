@@ -3,9 +3,11 @@ package de.softwartechnik.catalin.gui.swing.model;
 import de.softwartechnik.catalin.core.model.Person;
 
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
-public class PersonsTableModel extends DefaultTableModel {
+public class PersonsTableModel extends DefaultTableModel{
 
     private static final String[] COLUMNS = {"Id", "Vorname", "Nachname", "Geburtstag"};
 
@@ -33,4 +35,5 @@ public class PersonsTableModel extends DefaultTableModel {
 
         return new Object[]{person.getId(), person.getFirstName(), person.getLastName(), person.getBirthday().toString()};
     }
+
 }

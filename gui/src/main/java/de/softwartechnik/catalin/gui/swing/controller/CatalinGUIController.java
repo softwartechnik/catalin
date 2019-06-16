@@ -18,11 +18,18 @@ import de.softwartechnik.catalin.gui.swing.view.CatalinGUIFlightsView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIMainView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIPersonsView;
 import de.softwartechnik.catalin.gui.swing.view.navigation.CatalinGUIViewNavigation;
+import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsTable;
 
 import javax.inject.Inject;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Date;
 import java.util.List;
 
