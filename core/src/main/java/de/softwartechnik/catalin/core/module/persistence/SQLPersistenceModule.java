@@ -35,7 +35,7 @@ public class SQLPersistenceModule extends AbstractModule {
     @Override
     protected void configure() {
 
-        install(new JpaPersistModule("catalinPersistence"));
+        install(new JpaPersistModule(persistenceUnitName));
 
         bind(HibernateInitializer.class).asEagerSingleton();
 
