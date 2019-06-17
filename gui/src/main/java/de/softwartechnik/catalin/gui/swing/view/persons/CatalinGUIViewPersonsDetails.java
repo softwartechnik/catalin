@@ -5,12 +5,17 @@ import de.softwartechnik.catalin.core.model.Person;
 import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.SpringLayout;
 
 
-public class CatalinGUIViewPersonsDetails extends JFrame {
+public class CatalinGUIViewPersonsDetails extends JFrame implements Observer {
 
-    JPanel details;
+    private JPanel details;
     private final JButton save = new JButton("Änderungen speichern");
 
     private final JLabel VORNAME = new JLabel("Vorname:");
@@ -21,9 +26,10 @@ public class CatalinGUIViewPersonsDetails extends JFrame {
     private final JTextField tf_nachname = new JTextField();
     private final JTextField tf_datum = new JTextField();
 
-    Person currentPerson;
-    public CatalinGUIViewPersonsDetails(Person person){
-        this.currentPerson = person;
+    private CatalinGUIViewPersonsDetailsModel detailsModel;
+
+    public CatalinGUIViewPersonsDetails(CatalinGUIViewPersonsDetailsModel detailsModel){
+        this.detailsModel = detailsModel;
         setupPanel();
         setup();
 
@@ -36,10 +42,6 @@ public class CatalinGUIViewPersonsDetails extends JFrame {
     private void setupPanel(){
         details = new JPanel();
         details.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        tf_vorname.setText(currentPerson.getFirstName());
-        tf_nachname.setText(currentPerson.getLastName());
-        tf_datum.setText(currentPerson.getBirthday().toString());
 
         details.add(VORNAME);
         details.add(tf_vorname);
@@ -56,19 +58,42 @@ public class CatalinGUIViewPersonsDetails extends JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
-    public JTextField getTf_vorname() {
-        return tf_vorname;
-    }
-
-    public JTextField getTf_nachname() {
-        return tf_nachname;
-    }
-
-    public JTextField getTf_datum() {
-        return tf_datum;
-    }
-
     public JButton getSave() {
         return save;
+    }
+
+    @Override
+    public void update(Observable observable, Object arg) {
+
+        if (!(observable instanceof CatalinGUIViewPersonsDetailsModel)) {
+            throw new IllegalStateException("Shit hit the fen.");
+        }
+
+        CatalinGUIViewPersonsDetailsModel model = (CatalinGUIViewPersonsDetailsModel) observable;
+
+        tf_vorname.setText(model.getFirstName());
+        tf_nachname.setText(model.getLastName());
+        tf_datum.setText(model.getBirthday().toString());
+    }
+
+    public String getInputFirstName() {
+
+        return tf_vorname.getText();
+    }
+
+    public String getInputLastName() {
+
+        return tf_nachname.getText();
+    }
+
+    public Date getInputBirthday() {
+
+        try {
+            return new SimpleDateFormat().parse(tf_datum.getText());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new Date();
     }
 }

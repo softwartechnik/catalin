@@ -19,18 +19,14 @@ import de.softwartechnik.catalin.gui.swing.view.CatalinGUIMainView;
 import de.softwartechnik.catalin.gui.swing.view.CatalinGUIPersonsView;
 import de.softwartechnik.catalin.gui.swing.view.navigation.CatalinGUIViewNavigation;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsDetails;
-import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
-import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsTable;
+import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsDetailsModel;
 
 import javax.inject.Inject;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.xml.transform.sax.SAXSource;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
@@ -139,26 +135,27 @@ public class CatalinGUIController {
         });
 
         personsView.setEditButtonListener(click -> {
-            CatalinGUIViewPersonsPanel myPanel = (CatalinGUIViewPersonsPanel)personsView.getComponent();
-            if(myPanel.getTable().getSelectedRow() != -1){
 
-                /*
-                Nur zum Ausprobieren, hier muss die ausgewählte Person eingefügt werden,
-                oder direkt in CatalinGUIViewPersonsDetails injected werden.
-                 */
-                Person meinePerson = new Person();
-                meinePerson.setFirstName("Mein Vorname");
-                meinePerson.setLastName("Mein Nachname");
-                meinePerson.setBirthday(new Date());
-                CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(meinePerson);
+            long selectedPersonId = personsView.getSelectedPersonId();
+            Person person = personService.getPerson(selectedPersonId);
 
-                det.getSave().addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        //Hier die Änderungen speichern
-                    }
-                });
-            }
+            CatalinGUIViewPersonsDetailsModel detailsModel = new CatalinGUIViewPersonsDetailsModel(
+                    person.getFirstName(), person.getLastName(), person.getBirthday()
+            );
+            CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(detailsModel);
+
+            detailsModel.addObserver(det);
+            detailsModel.notifyObservers();
+
+            det.getSave().addActionListener(e -> {
+                person.setFirstName(det.getInputFirstName());
+                person.setLastName(det.getInputLastName());
+                person.setBirthday(det.getInputBirthday());
+
+                personService.savePerson(person);
+
+                det.dispose();
+            });
         });
 
 

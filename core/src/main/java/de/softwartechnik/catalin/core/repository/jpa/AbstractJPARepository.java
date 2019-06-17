@@ -62,6 +62,12 @@ public abstract class AbstractJPARepository<EntityType extends CatalinModel> ext
     }
 
     @Override
+    public boolean exists(long entityId) {
+
+        return getEntityManager().getReference(getEntityClass(), entityId) != null;
+    }
+
+    @Override
     public List<EntityType> findAll() {
 
         CriteriaQuery<EntityType> query = getEntityManager()

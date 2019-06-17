@@ -8,6 +8,14 @@ import java.util.List;
 public interface PersonService {
 
     /**
+     * Save the given person.
+     *
+     * @param person The person.
+     * @return The person.
+     */
+    Person savePerson(Person person);
+
+    /**
      * Create and persist a new person.
      *
      * @param firstName The first name.

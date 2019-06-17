@@ -17,6 +17,12 @@ public class CatalinPersonService implements PersonService {
     }
 
     @Override
+    public Person savePerson(Person person) {
+
+        return personRepository.save(person);
+    }
+
+    @Override
     public Person createPerson(String firstName, String lastName, Date birthday) {
 
         Person person = new Person(firstName, lastName, birthday);

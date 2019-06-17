@@ -41,6 +41,12 @@ public class AbstractMapRepository<EntityType extends CatalinModel> extends Abst
     }
 
     @Override
+    public boolean exists(long entityId) {
+
+        return storage.containsKey(entityId);
+    }
+
+    @Override
     public List<EntityType> findAll() {
 
         return new ArrayList<>(storage.values());

@@ -30,6 +30,14 @@ public interface Repository<EntityType extends CatalinModel> {
     EntityType find(long entityId);
 
     /**
+     * Check if there is an entity with the given id.
+     *
+     * @param entityId The id.
+     * @return The result.
+     */
+    boolean exists(long entityId);
+
+    /**
      * Find all entities.
      *
      * @return The entities.

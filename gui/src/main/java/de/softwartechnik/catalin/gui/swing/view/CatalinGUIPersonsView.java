@@ -3,6 +3,7 @@ package de.softwartechnik.catalin.gui.swing.view;
 import de.softwartechnik.catalin.gui.swing.model.PersonsTableModel;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsPanel;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsSidebar;
+import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsTable;
 
 import javax.inject.Inject;
 import javax.swing.*;
@@ -79,5 +80,26 @@ public class CatalinGUIPersonsView extends AbstractCatalinGUIView {
         textFieldDate.setValue(new Date());
         textFieldFirstName.setText("Vorname");
         textFieldLastName.setText("Nachname");
+    }
+
+    public long getSelectedPersonId() {
+
+        PersonsTableModel personsModel = getPersonsModel();
+        CatalinGUIViewPersonsTable table = personsPanel.getTable();
+        int selectedRow = table.getSelectedRow();
+
+        if (selectedRow == -1) {
+
+            return -1;
+        }
+
+        Object value = personsModel.getValueAt(selectedRow, 0);
+
+        if (value == null) {
+
+            return -1;
+        }
+
+        return Long.valueOf(value.toString());
     }
 }
