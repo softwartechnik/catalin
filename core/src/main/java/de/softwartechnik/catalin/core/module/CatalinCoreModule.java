@@ -44,6 +44,7 @@ public class CatalinCoreModule extends AbstractModule {
             }
             case SQLITE: {
                 install(new SQLPersistenceModule(PERSISTENCE_UNIT_LITE));
+                break;
             }
             default: {
                 install(new MapPersistenceModule());
