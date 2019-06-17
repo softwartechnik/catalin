@@ -13,7 +13,8 @@ public class CatalinRowFilter<BookingsTableModel, Object> extends RowFilter<Book
     }
 
     @Override
-    public boolean include(Entry entry) {
+    public boolean include(Entry<? extends BookingsTableModel, ? extends Object> entry) {
+
         if (searchWord.isEmpty()) {
             return true;
         }
