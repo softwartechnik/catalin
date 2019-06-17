@@ -21,7 +21,7 @@
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect" />
-
+            <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.connection.driver_class" value="org.mariadb.jdbc.Driver" />
             <property name="hibernate.connection.username" value="root" />
             <property name="hibernate.connection.password" value="example" />
@@ -47,7 +47,9 @@
         <class>de.softwartechnik.catalin.core.model.BookingExtra</class>
 
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <!-- SQLIte is not supported for update -->
+            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
             <property name="hibernate.connection.driver_class" value="org.sqlite.JDBC" />
             <property name="hibernate.connection.url" value="jdbc:sqlite:catalin.sqlite" />

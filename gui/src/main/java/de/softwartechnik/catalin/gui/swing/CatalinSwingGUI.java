@@ -21,6 +21,7 @@ import de.softwartechnik.catalin.gui.CatalinGUI;
 import de.softwartechnik.catalin.gui.swing.controller.CatalinGUIController;
 
 import javax.inject.Inject;
+import javax.persistence.Persistence;
 import java.util.Date;
 
 public class CatalinSwingGUI implements CatalinGUI {
@@ -48,9 +49,6 @@ public class CatalinSwingGUI implements CatalinGUI {
     @Override
     public void initialize() {
         CatalinPersistenceMode persistenceMode = catalinCoreConfig.getPersistenceMode();
-        if (persistenceMode == CatalinPersistenceMode.SQLITE || persistenceMode == CatalinPersistenceMode.MAP) {
-            initMocks();
-        }
 
         controller.showOverview();
     }
