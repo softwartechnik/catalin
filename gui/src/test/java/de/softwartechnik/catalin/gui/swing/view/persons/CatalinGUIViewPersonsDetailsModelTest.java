@@ -10,6 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import javax.swing.*;
 
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,10 +27,22 @@ class CatalinGUIViewPersonsDetailsModelTest {
     private final Date birthdayChanged = new Date(1985, 1, 1);
 
     CatalinGUIViewPersonsDetailsModel details;
+    Observer observer;
+    boolean isNotified;
 
     @BeforeEach
     void  init() {
         details = new CatalinGUIViewPersonsDetailsModel(firstName,lastName,birthday);
+        isNotified = false;
+
+        observer = new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                isNotified = true;
+            }
+        };
+
+        details.addObserver(observer);
 
     }
 
@@ -38,26 +52,44 @@ class CatalinGUIViewPersonsDetailsModelTest {
     }
 
     @Test
-    void setFirstName() {
+    void noNotificationWhenGet() {
+        String name = details.getFirstName();
+        assertFalse(isNotified);
+    }
+
+
+    @Test
+    void setFirstNameNotify() {
         details.setFirstName(firstNameChanged);
-        assertTrue(details.hasChanged());
+        assertTrue(isNotified);
     }
 
     @Test
-    void getLastName() {
-        assertEquals(details.getLastName(), lastName);
+    void setLastNameNotify() {
+        details.setLastName(lastNameChanged);
+        assertTrue(isNotified);
+    }
+
+    @Test
+    void setBirthdayNotify() {
+        details.setBirthday(birthdayChanged);
+        assertTrue(isNotified);
+    }
+    @Test
+    void setFirstName() {
+        details.setFirstName(firstNameChanged);
+        assertEquals(firstNameChanged,details.getFirstName());
     }
 
     @Test
     void setLastName() {
-    }
-
-    @Test
-    void getBirthday() {
-        assertEquals(details.getBirthday(), birthday);
+        details.setLastName(lastNameChanged);
+        assertEquals(lastNameChanged,details.getLastName());
     }
 
     @Test
     void setBirthday() {
+        details.setBirthday(birthdayChanged);
+        assertEquals(birthdayChanged,details.getBirthday());
     }
 }
