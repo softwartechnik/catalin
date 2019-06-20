@@ -27,9 +27,9 @@ class CatalinGUIViewPersonsDetailsModelTest {
     private final String lastNameChanged = "Kaffeekanne";
     private final Date birthdayChanged = new Date(1985, Calendar.FEBRUARY, 1);
 
-    CatalinGUIViewPersonsDetailsModel details;
-    Observer observer;
-    boolean isNotified;
+    private CatalinGUIViewPersonsDetailsModel details;
+    private Observer observer;
+    private boolean isNotified;
 
     @BeforeEach
     void  init() {
