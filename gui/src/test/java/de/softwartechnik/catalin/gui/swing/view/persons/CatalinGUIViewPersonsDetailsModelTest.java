@@ -36,12 +36,7 @@ class CatalinGUIViewPersonsDetailsModelTest {
         details = new CatalinGUIViewPersonsDetailsModel(firstName,lastName,birthday);
         isNotified = false;
 
-        observer = new Observer() {
-            @Override
-            public void update(Observable o, Object arg) {
-                isNotified = true;
-            }
-        };
+        observer = (observable, arguments) -> isNotified = true;
 
         details.addObserver(observer);
 
