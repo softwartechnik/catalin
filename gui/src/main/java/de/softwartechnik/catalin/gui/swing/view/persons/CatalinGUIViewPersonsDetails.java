@@ -1,8 +1,5 @@
 package de.softwartechnik.catalin.gui.swing.view.persons;
 
-import de.softwartechnik.catalin.core.model.Person;
-
-import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 import java.text.ParseException;
@@ -10,25 +7,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.SpringLayout;
 
 
 public class CatalinGUIViewPersonsDetails extends JFrame implements Observer {
 
-    private JPanel details;
     private final JButton save = new JButton("Änderungen speichern");
-
     private final JLabel VORNAME = new JLabel("Vorname:");
     private final JLabel NACHNAME = new JLabel("Nachname:");
     private final JLabel GEB = new JLabel("Geburtstag:");
-
     private final JTextField tf_vorname = new JTextField();
     private final JTextField tf_nachname = new JTextField();
     private final JTextField tf_datum = new JTextField();
-
+    private JPanel details;
     private CatalinGUIViewPersonsDetailsModel detailsModel;
 
-    public CatalinGUIViewPersonsDetails(CatalinGUIViewPersonsDetailsModel detailsModel){
+    public CatalinGUIViewPersonsDetails(CatalinGUIViewPersonsDetailsModel detailsModel) {
         this.detailsModel = detailsModel;
         setupPanel();
         setup();
@@ -39,7 +32,7 @@ public class CatalinGUIViewPersonsDetails extends JFrame implements Observer {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
-    private void setupPanel(){
+    private void setupPanel() {
         details = new JPanel();
         details.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -52,10 +45,10 @@ public class CatalinGUIViewPersonsDetails extends JFrame implements Observer {
         details.add(save);
     }
 
-    private void setup(){
+    private void setup() {
         setSize(400, 300);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
     public JButton getSave() {

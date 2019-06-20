@@ -1,7 +1,5 @@
 package de.softwartechnik.catalin.gui.swing.controller;
 
-import de.softwartechnik.catalin.gui.swing.model.BookingsTableModel;
-
 import javax.swing.*;
 
 public class CatalinRowFilter<BookingsTableModel, Object> extends RowFilter<BookingsTableModel, Object> {

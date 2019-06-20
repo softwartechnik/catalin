@@ -1,20 +1,15 @@
 package de.softwartechnik.catalin.gui.swing.controller;
 
-import de.softwartechnik.catalin.core.model.CatalinModel;
-import de.softwartechnik.catalin.core.repository.map.AbstractMapRepository;
-import de.softwartechnik.catalin.gui.swing.model.BookingsTableModel;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 
 import javax.swing.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
 class CatalinRowFilterTest {

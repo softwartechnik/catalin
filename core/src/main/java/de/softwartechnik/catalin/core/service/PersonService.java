@@ -11,6 +11,7 @@ public interface PersonService {
      * Save the given person.
      *
      * @param person The person.
+     *
      * @return The person.
      */
     Person savePerson(Person person);
