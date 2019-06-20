@@ -21,7 +21,6 @@ import de.softwartechnik.catalin.gui.CatalinGUI;
 import de.softwartechnik.catalin.gui.swing.controller.CatalinGUIController;
 
 import javax.inject.Inject;
-import javax.persistence.Persistence;
 import java.util.Date;
 
 public class CatalinSwingGUI implements CatalinGUI {

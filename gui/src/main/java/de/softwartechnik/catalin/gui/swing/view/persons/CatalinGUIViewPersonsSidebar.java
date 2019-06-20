@@ -29,7 +29,9 @@ public class CatalinGUIViewPersonsSidebar extends JPanel {
         add(buttonEdit);
     }
 
-    public JButton getButtonEdit() { return buttonEdit;}
+    public JButton getButtonEdit() {
+        return buttonEdit;
+    }
 
     public JButton getButtonAdd() {
         return buttonAdd;

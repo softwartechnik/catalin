@@ -2,7 +2,6 @@ package de.softwartechnik.catalin.core.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -23,7 +22,7 @@ public class BookingExtra implements CatalinModel {
     public static final String TABLE_NAME = "booking_extras";
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     @Column(name = "id")
     private long id;

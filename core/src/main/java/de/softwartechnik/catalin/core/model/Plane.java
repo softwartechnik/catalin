@@ -23,7 +23,7 @@ public class Plane implements CatalinModel {
     public static final String TABLE_NAME = "planes";
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     @Column(name = "id")
     private long id;
