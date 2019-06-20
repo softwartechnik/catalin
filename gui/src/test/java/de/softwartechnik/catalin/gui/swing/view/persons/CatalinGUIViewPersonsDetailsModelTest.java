@@ -1,17 +1,12 @@
 package de.softwartechnik.catalin.gui.swing.view.persons;
 
-import de.softwartechnik.catalin.core.model.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import javax.swing.*;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Observable;
 import java.util.Observer;
 
 import static org.junit.jupiter.api.Assertions.*;
