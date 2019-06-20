@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.swing.*;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
@@ -20,11 +21,11 @@ class CatalinGUIViewPersonsDetailsModelTest {
 
     private final String firstName = "Jane";
     private final String lastName = "Doe";
-    private final Date birthday = new Date(1995, 10,23);
+    private final Date birthday = new Date(1995, Calendar.NOVEMBER,23);
 
     private final String firstNameChanged = "Anne";
     private final String lastNameChanged = "Kaffeekanne";
-    private final Date birthdayChanged = new Date(1985, 1, 1);
+    private final Date birthdayChanged = new Date(1985, Calendar.FEBRUARY, 1);
 
     CatalinGUIViewPersonsDetailsModel details;
     Observer observer;
