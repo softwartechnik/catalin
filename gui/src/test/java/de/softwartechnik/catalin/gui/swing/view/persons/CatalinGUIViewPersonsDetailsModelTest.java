@@ -16,7 +16,7 @@ class CatalinGUIViewPersonsDetailsModelTest {
 
     private final String firstName = "Jane";
     private final String lastName = "Doe";
-    private final Date birthday = new Date(1995, Calendar.NOVEMBER,23);
+    private final Date birthday = new Date(1995, Calendar.NOVEMBER, 23);
 
     private final String firstNameChanged = "Anne";
     private final String lastNameChanged = "Kaffeekanne";
@@ -27,8 +27,8 @@ class CatalinGUIViewPersonsDetailsModelTest {
     private boolean isNotified;
 
     @BeforeEach
-    void  init() {
-        details = new CatalinGUIViewPersonsDetailsModel(firstName,lastName,birthday);
+    void init() {
+        details = new CatalinGUIViewPersonsDetailsModel(firstName, lastName, birthday);
         isNotified = false;
 
         observer = (observable, arguments) -> isNotified = true;
@@ -66,21 +66,22 @@ class CatalinGUIViewPersonsDetailsModelTest {
         details.setBirthday(birthdayChanged);
         assertTrue(isNotified);
     }
+
     @Test
     void setFirstName() {
         details.setFirstName(firstNameChanged);
-        assertEquals(firstNameChanged,details.getFirstName());
+        assertEquals(firstNameChanged, details.getFirstName());
     }
 
     @Test
     void setLastName() {
         details.setLastName(lastNameChanged);
-        assertEquals(lastNameChanged,details.getLastName());
+        assertEquals(lastNameChanged, details.getLastName());
     }
 
     @Test
     void setBirthday() {
         details.setBirthday(birthdayChanged);
-        assertEquals(birthdayChanged,details.getBirthday());
+        assertEquals(birthdayChanged, details.getBirthday());
     }
 }
