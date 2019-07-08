@@ -1,18 +1,26 @@
 package de.softwartechnik.catalin.gui.swing.model;
 
 import de.softwartechnik.catalin.core.model.Flight;
+import de.softwartechnik.catalin.gui.service.LanguageService;
 
+import javax.inject.Inject;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class FlightsTableModel extends DefaultTableModel {
 
-    private static final String[] COLUMNS = {"Id", "Titel", "Start", "Ziel", "Flugzeug"};
+    private static final String[] COLUMNS = {"flights.tablemodel.id",
+            "flights.tablemodel.title",
+            "flights.tablemodel.departure",
+            "flights.tablemodel.destination",
+            "flights.tablemodel.airplane"};
+    private final LanguageService languageService;
 
-    public FlightsTableModel(List<Flight> flights) {
-
+    @Inject
+    public FlightsTableModel(List<Flight> flights,LanguageService languageService) {
+    this.languageService = languageService;
         for (String column : COLUMNS) {
-            addColumn(column);
+            addColumn(languageService.translate(column));
         }
 
         flights.forEach(this::addFlight);
