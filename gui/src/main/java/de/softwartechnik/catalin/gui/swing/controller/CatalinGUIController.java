@@ -8,6 +8,7 @@ import de.softwartechnik.catalin.core.service.BookingService;
 import de.softwartechnik.catalin.core.service.EmployeeService;
 import de.softwartechnik.catalin.core.service.FlightService;
 import de.softwartechnik.catalin.core.service.PersonService;
+import de.softwartechnik.catalin.gui.service.LanguageService;
 import de.softwartechnik.catalin.gui.swing.model.BookingsTableModel;
 import de.softwartechnik.catalin.gui.swing.model.EmployeesTableModel;
 import de.softwartechnik.catalin.gui.swing.model.FlightsTableModel;
@@ -42,8 +43,10 @@ public class CatalinGUIController {
     private final CatalinGUIEmployeesView employeesView;
     private final CatalinGUIPersonsView personsView;
 
+    private final LanguageService languageService;
+
     @Inject
-    public CatalinGUIController(CatalinGUIMainView view, PersonService personService, BookingService bookingService, FlightService flightService, EmployeeService employeeService, CatalinGUIFlightsView flightsView, CatalinGUIBookingsView bookingsView, CatalinGUIEmployeesView employeesView, CatalinGUIPersonsView personsView) {
+    public CatalinGUIController(CatalinGUIMainView view, PersonService personService, BookingService bookingService, FlightService flightService, EmployeeService employeeService, CatalinGUIFlightsView flightsView, CatalinGUIBookingsView bookingsView, CatalinGUIEmployeesView employeesView, CatalinGUIPersonsView personsView,LanguageService languageService) {
         this.view = view;
         this.personService = personService;
         this.bookingService = bookingService;
@@ -53,7 +56,7 @@ public class CatalinGUIController {
         this.bookingsView = bookingsView;
         this.employeesView = employeesView;
         this.personsView = personsView;
-
+        this.languageService = languageService;
         setupListeners();
     }
 
@@ -140,7 +143,7 @@ public class CatalinGUIController {
             CatalinGUIViewPersonsDetailsModel detailsModel = new CatalinGUIViewPersonsDetailsModel(
                     person.getFirstName(), person.getLastName(), person.getBirthday()
             );
-            CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(detailsModel);
+            CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(detailsModel,languageService);
 
             detailsModel.addObserver(det);
             detailsModel.notifyObservers();

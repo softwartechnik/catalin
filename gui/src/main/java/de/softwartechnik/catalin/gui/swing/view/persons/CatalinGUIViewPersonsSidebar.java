@@ -1,5 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.persons;
 
+import de.softwartechnik.catalin.gui.service.LanguageService;
+
+import javax.inject.Inject;
 import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,14 +16,18 @@ public class CatalinGUIViewPersonsSidebar extends JPanel {
     private final JButton buttonAdd;
     private final JButton buttonEdit;
 
-    public CatalinGUIViewPersonsSidebar() {
+    private final LanguageService languageService;
 
-        textFieldFirstName = new JTextField("Vorname");
-        textFieldLastName = new JTextField("Nachname");
+    @Inject
+    public CatalinGUIViewPersonsSidebar(LanguageService languageService) {
+        this.languageService = languageService;
+
+        textFieldFirstName = new JTextField(languageService.translate("persons.sidebar.firstName"));
+        textFieldLastName = new JTextField(languageService.translate("persons.sidebar.lastName"));
         textFieldDate = new JFormattedTextField(new SimpleDateFormat());
         textFieldDate.setValue(new Date());
-        buttonAdd = new JButton("Speichern");
-        buttonEdit = new JButton("Ändern");
+        buttonAdd = new JButton(languageService.translate("persons.sidebar.save"));
+        buttonEdit = new JButton(languageService.translate("persons.sidebar.edit"));
 
         add(textFieldFirstName);
         add(textFieldLastName);

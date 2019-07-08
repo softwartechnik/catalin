@@ -1,5 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.navigation;
 
+import de.softwartechnik.catalin.gui.service.LanguageService;
+
+import javax.inject.Inject;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -8,15 +11,23 @@ import java.awt.*;
 
 public class CatalinGUIViewNavigation extends JMenuBar {
 
-    private final JMenu menuEmployees = new JMenu("Angestellte");
-    private final JMenu menuBookings = new JMenu("Buchungen");
-    private final JMenu menuFlights = new JMenu("Flüge");
-    private final JMenu menuPersons = new JMenu("Personen");
+    private final LanguageService languageService;
 
-    public CatalinGUIViewNavigation() {
+    private final JMenu menuEmployees;
+    private final JMenu menuBookings;
+    private final JMenu menuFlights;
+    private final JMenu menuPersons;
 
+    @Inject
+    public CatalinGUIViewNavigation(LanguageService languageService) {
+        this.languageService = languageService;
         Border border = new LineBorder(Color.BLACK);
         setBorder(border);
+
+        menuEmployees = new JMenu(languageService.translate("navigation.employees"));
+        menuBookings = new JMenu(languageService.translate("navigation.bookings"));
+        menuFlights = new JMenu(languageService.translate("navigation.flights"));
+        menuPersons = new JMenu(languageService.translate("navigation.persons"));
 
         add(menuEmployees);
         add(menuBookings);

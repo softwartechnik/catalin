@@ -1,5 +1,8 @@
 package de.softwartechnik.catalin.gui.swing.view.persons;
 
+import de.softwartechnik.catalin.gui.service.LanguageService;
+
+import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 import java.text.ParseException;
@@ -11,18 +14,28 @@ import java.util.Observer;
 
 public class CatalinGUIViewPersonsDetails extends JFrame implements Observer {
 
-    private final JButton save = new JButton("Änderungen speichern");
-    private final JLabel VORNAME = new JLabel("Vorname:");
-    private final JLabel NACHNAME = new JLabel("Nachname:");
-    private final JLabel GEB = new JLabel("Geburtstag:");
+    private final JButton save;
+    private final JLabel VORNAME;
+    private final JLabel NACHNAME;
+    private final JLabel GEB;
     private final JTextField tf_vorname = new JTextField();
     private final JTextField tf_nachname = new JTextField();
     private final JTextField tf_datum = new JTextField();
     private JPanel details;
     private CatalinGUIViewPersonsDetailsModel detailsModel;
 
-    public CatalinGUIViewPersonsDetails(CatalinGUIViewPersonsDetailsModel detailsModel) {
+    private final LanguageService languageService;
+
+    @Inject
+    public CatalinGUIViewPersonsDetails(CatalinGUIViewPersonsDetailsModel detailsModel,LanguageService languageService) {
+        this.languageService = languageService;
         this.detailsModel = detailsModel;
+
+        save = new JButton(languageService.translate("person.details.save"));
+        VORNAME = new JLabel(languageService.translate("person.details.firstName"));
+        NACHNAME = new JLabel(languageService.translate("person.details.lastName"));
+        GEB = new JLabel(languageService.translate("person.details.birthday"));
+
         setupPanel();
         setup();
 
