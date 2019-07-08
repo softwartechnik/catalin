@@ -6,10 +6,12 @@ import de.softwartechnik.catalin.core.model.Terminal;
 import de.softwartechnik.catalin.core.repository.AirportRepository;
 import de.softwartechnik.catalin.core.repository.EmployeeRepository;
 import de.softwartechnik.catalin.core.repository.TerminalRepository;
+import lombok.extern.flogger.Flogger;
 
 import javax.inject.Inject;
 import java.util.List;
 
+@Flogger
 public class CatalinAirportService implements AirportService {
 
     private final AirportRepository airportRepository;
@@ -61,6 +63,8 @@ public class CatalinAirportService implements AirportService {
 
     @Override
     public Airport createAirport(String name) {
+
+        log.atInfo().log("Creating new airport named %s.", name);
 
         Airport airport = new Airport(name);
         return airportRepository.save(airport);

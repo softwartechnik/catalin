@@ -47,8 +47,6 @@ public class CatalinSwingGUI implements CatalinGUI {
 
     @Override
     public void initialize() {
-        CatalinPersistenceMode persistenceMode = catalinCoreConfig.getPersistenceMode();
-
         controller.showOverview();
     }
 

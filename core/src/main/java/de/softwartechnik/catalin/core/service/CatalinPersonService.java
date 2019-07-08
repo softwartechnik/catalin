@@ -2,11 +2,13 @@ package de.softwartechnik.catalin.core.service;
 
 import de.softwartechnik.catalin.core.model.Person;
 import de.softwartechnik.catalin.core.repository.PersonRepository;
+import lombok.extern.flogger.Flogger;
 
 import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
+@Flogger
 public class CatalinPersonService implements PersonService {
 
     private final PersonRepository personRepository;
@@ -19,11 +21,15 @@ public class CatalinPersonService implements PersonService {
     @Override
     public Person savePerson(Person person) {
 
+        log.atInfo().log("Saving person %d." + person.getId());
+
         return personRepository.save(person);
     }
 
     @Override
     public Person createPerson(String firstName, String lastName, Date birthday) {
+
+        log.atInfo().log("Creating new person named %s %s.", firstName, lastName);
 
         Person person = new Person(firstName, lastName, birthday);
         return personRepository.save(person);

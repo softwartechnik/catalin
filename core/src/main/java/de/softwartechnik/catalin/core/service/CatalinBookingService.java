@@ -5,10 +5,12 @@ import de.softwartechnik.catalin.core.model.BookingExtra;
 import de.softwartechnik.catalin.core.model.Flight;
 import de.softwartechnik.catalin.core.model.Person;
 import de.softwartechnik.catalin.core.repository.BookingRepository;
+import lombok.extern.flogger.Flogger;
 
 import javax.inject.Inject;
 import java.util.List;
 
+@Flogger
 public class CatalinBookingService implements BookingService {
 
     private final BookingRepository bookingRepository;
@@ -20,6 +22,8 @@ public class CatalinBookingService implements BookingService {
 
     @Override
     public Booking bookFlight(Person person, Flight flight, List<BookingExtra> extras) {
+
+        log.atInfo().log("%s %s booking a new flight to %s", person.getFirstName(), person.getLastName(), flight.getDestination().getName());
 
         Booking booking = new Booking(person, flight, extras);
         return bookingRepository.save(booking);
