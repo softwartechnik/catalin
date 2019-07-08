@@ -10,6 +10,7 @@ import lombok.extern.flogger.Flogger;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 @Flogger
 public class CatalinAirlineService implements AirlineService {

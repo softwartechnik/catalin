@@ -1,5 +1,6 @@
 package de.softwartechnik.catalin.gui.swing.view.bookings;
 
+import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,11 +9,11 @@ public class CatalinGUIViewBookingsSidebar extends JPanel {
 
     private final CatalinGUIViewBookingsSidebarSearch sidebarSearch;
 
-    public CatalinGUIViewBookingsSidebar() {
+    @Inject
+    public CatalinGUIViewBookingsSidebar(CatalinGUIViewBookingsSidebarSearch sidebarSearch) {
+        this.sidebarSearch = sidebarSearch;
 
         setLayout(new BorderLayout());
-
-        sidebarSearch = new CatalinGUIViewBookingsSidebarSearch();
         add(sidebarSearch, BorderLayout.NORTH);
     }
 

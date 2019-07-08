@@ -6,21 +6,21 @@ import java.awt.*;
 
 public class CatalinGUIViewBookingsPanel extends JPanel {
 
-    private CatalinGUIViewBookingsTable bookingsTable = new CatalinGUIViewBookingsTable();
-    private CatalinGUIViewBookingsSidebar sidepanel;
+    private final CatalinGUIViewBookingsTable bookingsTable = new CatalinGUIViewBookingsTable();
+    private final CatalinGUIViewBookingsSidebar sidepanel;
 
     @Inject
-    public CatalinGUIViewBookingsPanel() {
+    public CatalinGUIViewBookingsPanel(CatalinGUIViewBookingsSidebar sidepanel) {
+        this.sidepanel = sidepanel;
 
         setLayout(new BorderLayout());
-        sidepanel = new CatalinGUIViewBookingsSidebar();
 
         // Add table
 
         JScrollPane scrollPane = new JScrollPane(bookingsTable);
         add(scrollPane, BorderLayout.CENTER);
 
-        add(sidepanel, BorderLayout.EAST);
+        add(this.sidepanel, BorderLayout.EAST);
     }
 
     public CatalinGUIViewBookingsTable getBookingsTable() {

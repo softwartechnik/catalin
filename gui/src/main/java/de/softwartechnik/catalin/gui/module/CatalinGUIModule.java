@@ -5,6 +5,8 @@ import com.google.inject.Provides;
 import de.softwartechnik.catalin.core.config.CatalinCoreConfig;
 import de.softwartechnik.catalin.core.module.CatalinCoreModule;
 import de.softwartechnik.catalin.gui.CatalinGUI;
+import de.softwartechnik.catalin.gui.service.LanguageService;
+import de.softwartechnik.catalin.gui.service.LanguageServiceImpl;
 import de.softwartechnik.catalin.gui.swing.CatalinSwingGUI;
 
 import javax.inject.Named;
@@ -29,6 +31,8 @@ public class CatalinGUIModule extends AbstractModule {
         install(new CatalinCoreModule(catalinCoreConfig));
 
         bind(CatalinGUI.class).to(CatalinSwingGUI.class);
+
+        bind(LanguageService.class).to(LanguageServiceImpl.class);
     }
 
     @Provides
