@@ -66,7 +66,7 @@ public class CatalinGUIViewPersonsDetails extends JFrame implements Observer {
 
         tf_vorname.setText(model.getFirstName());
         tf_nachname.setText(model.getLastName());
-        tf_datum.setText(model.getBirthday().toString());
+        tf_datum.setText(new SimpleDateFormat().format(model.getBirthday()));
     }
 
     public String getInputFirstName() {
