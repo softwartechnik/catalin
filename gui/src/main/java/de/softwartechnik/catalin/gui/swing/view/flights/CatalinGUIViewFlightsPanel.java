@@ -10,18 +10,18 @@ public class CatalinGUIViewFlightsPanel extends JPanel {
     private final CatalinGUIViewFlightsSidebar sidebar;
 
     @Inject
-    public CatalinGUIViewFlightsPanel() {
+    public CatalinGUIViewFlightsPanel(CatalinGUIViewFlightsTable table, CatalinGUIViewFlightsSidebar sidebar) {
+        this.table = table;
+        this.sidebar = sidebar;
 
         setLayout(new BorderLayout());
 
         // Add table
-        table = new CatalinGUIViewFlightsTable();
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(this.table);
         add(scrollPane, BorderLayout.CENTER);
 
         // Add sidebar
-        sidebar = new CatalinGUIViewFlightsSidebar();
-        add(sidebar, BorderLayout.EAST);
+        add(this.sidebar, BorderLayout.EAST);
     }
 
     public CatalinGUIViewFlightsSidebar getSidebar() {

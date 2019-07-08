@@ -2,6 +2,7 @@ package de.softwartechnik.catalin.gui.swing.view;
 
 import de.softwartechnik.catalin.gui.swing.view.navigation.CatalinGUIViewNavigation;
 
+import javax.inject.Inject;
 import javax.swing.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +14,9 @@ public class CatalinGUIMainView extends JFrame {
     private final JPanel contentPane;
     private Logger logger = Logger.getLogger(CatalinGUIMainView.TITLE);
 
-    public CatalinGUIMainView() {
+    @Inject
+    public CatalinGUIMainView(CatalinGUIViewNavigation navigation) {
+        this.navigation = navigation;
 
         // Setup content
         setTitle(TITLE);
@@ -25,8 +28,7 @@ public class CatalinGUIMainView extends JFrame {
         setContentPane(contentPane);
 
         // Setup components
-        navigation = new CatalinGUIViewNavigation();
-        setJMenuBar(navigation);
+        setJMenuBar(this.navigation);
 
         setVisible(true);
         repaint();

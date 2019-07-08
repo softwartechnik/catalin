@@ -21,7 +21,7 @@ public class CatalinPersonService implements PersonService {
     @Override
     public Person savePerson(Person person) {
 
-        log.atInfo().log("Saving person %d." + person.getId());
+        log.atInfo().log("Saving person %d.", person.getId());
 
         return personRepository.save(person);
     }

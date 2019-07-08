@@ -1,7 +1,7 @@
 package de.softwartechnik.catalin.gui.module;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
+import com.google.inject.name.Names;
 import de.softwartechnik.catalin.core.config.CatalinCoreConfig;
 import de.softwartechnik.catalin.core.module.CatalinCoreModule;
 import de.softwartechnik.catalin.gui.CatalinGUI;
@@ -9,21 +9,22 @@ import de.softwartechnik.catalin.gui.service.LanguageService;
 import de.softwartechnik.catalin.gui.service.LanguageServiceImpl;
 import de.softwartechnik.catalin.gui.swing.CatalinSwingGUI;
 
-import javax.inject.Named;
-import javax.inject.Singleton;
-import java.util.ResourceBundle;
+import java.util.Properties;
 
 public class CatalinGUIModule extends AbstractModule {
 
-    private static final String RESOURCE_BUNDLE_NAME = "catalin";
+    private final Properties properties;
     private final CatalinCoreConfig catalinCoreConfig;
 
-    public CatalinGUIModule(CatalinCoreConfig catalinCoreConfig) {
+    public CatalinGUIModule(Properties properties, CatalinCoreConfig catalinCoreConfig) {
+        this.properties = properties;
         this.catalinCoreConfig = catalinCoreConfig;
     }
 
     @Override
     protected void configure() {
+
+        Names.bindProperties(binder(), properties);
 
         bind(CatalinCoreConfig.class).toInstance(catalinCoreConfig);
 
@@ -33,13 +34,5 @@ public class CatalinGUIModule extends AbstractModule {
         bind(CatalinGUI.class).to(CatalinSwingGUI.class);
 
         bind(LanguageService.class).to(LanguageServiceImpl.class);
-    }
-
-    @Provides
-    @Singleton
-    @Named("i18n")
-    public ResourceBundle provideI18nResourceBundle() {
-
-        return ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME);
     }
 }

@@ -10,15 +10,14 @@ public class CatalinGUIViewPersonsPanel extends JPanel {
     private final CatalinGUIViewPersonsSidebar sidebar;
 
     @Inject
-    public CatalinGUIViewPersonsPanel() {
+    public CatalinGUIViewPersonsPanel(CatalinGUIViewPersonsTable table, CatalinGUIViewPersonsSidebar sidebar) {
+        this.table = table;
+        this.sidebar = sidebar;
 
         setLayout(new BorderLayout());
 
-        table = new CatalinGUIViewPersonsTable();
-        sidebar = new CatalinGUIViewPersonsSidebar();
-
-        add(table, BorderLayout.CENTER);
-        add(sidebar, BorderLayout.EAST);
+        add(this.table, BorderLayout.CENTER);
+        add(this.sidebar, BorderLayout.EAST);
     }
 
     public CatalinGUIViewPersonsSidebar getSidebar() {
