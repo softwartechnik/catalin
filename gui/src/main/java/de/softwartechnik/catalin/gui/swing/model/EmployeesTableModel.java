@@ -15,7 +15,7 @@ public class EmployeesTableModel extends DefaultTableModel {
     private final LanguageService languageService;
 
     @Inject
-    public EmployeesTableModel(List<Employee> employees,LanguageService languageService) {
+    public EmployeesTableModel(List<Employee> employees, LanguageService languageService) {
         this.languageService = languageService;
         for (String column : COLUMNS) {
             addColumn(languageService.translate(column));
