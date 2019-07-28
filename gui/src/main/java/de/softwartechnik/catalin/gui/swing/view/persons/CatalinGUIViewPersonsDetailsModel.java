@@ -5,48 +5,48 @@ import java.util.Observable;
 
 public class CatalinGUIViewPersonsDetailsModel extends Observable {
 
-    private String firstName;
-    private String lastName;
-    private Date birthday;
+  private String firstName;
+  private String lastName;
+  private Date birthday;
 
-    public CatalinGUIViewPersonsDetailsModel(String firstName, String lastName, Date birthday) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthday = birthday;
+  public CatalinGUIViewPersonsDetailsModel(String firstName, String lastName, Date birthday) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.birthday = birthday;
 
-        setChanged();
-    }
+    setChanged();
+  }
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
 
-        setChanged();
-        notifyObservers();
-    }
+    setChanged();
+    notifyObservers();
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
 
-        setChanged();
-        notifyObservers();
-    }
+    setChanged();
+    notifyObservers();
+  }
 
-    public Date getBirthday() {
-        return birthday;
-    }
+  public Date getBirthday() {
+    return birthday;
+  }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+  public void setBirthday(Date birthday) {
+    this.birthday = birthday;
 
-        setChanged();
-        notifyObservers();
-    }
+    setChanged();
+    notifyObservers();
+  }
 }

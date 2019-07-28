@@ -3,53 +3,54 @@ package de.softwartechnik.catalin.gui.swing.view;
 import de.softwartechnik.catalin.gui.swing.model.BookingsTableModel;
 import de.softwartechnik.catalin.gui.swing.view.bookings.CatalinGUIViewBookingsPanel;
 import de.softwartechnik.catalin.gui.swing.view.bookings.CatalinGUIViewBookingsSidebarSearch;
-
-import javax.inject.Inject;
-import javax.swing.*;
-import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionListener;
+import javax.inject.Inject;
+import javax.swing.JComponent;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 public class CatalinGUIBookingsView extends AbstractCatalinGUIView {
 
-    private final CatalinGUIViewBookingsPanel bookingsPanel;
-    private TableRowSorter<BookingsTableModel> rowSorter;
+  private final CatalinGUIViewBookingsPanel bookingsPanel;
+  private TableRowSorter<BookingsTableModel> rowSorter;
 
-    @Inject
-    public CatalinGUIBookingsView(CatalinGUIViewBookingsPanel bookingsPanel) {
-        this.bookingsPanel = bookingsPanel;
-    }
+  @Inject
+  public CatalinGUIBookingsView(CatalinGUIViewBookingsPanel bookingsPanel) {
+    this.bookingsPanel = bookingsPanel;
+  }
 
-    @Override
-    public JComponent getComponent() {
+  @Override
+  public JComponent getComponent() {
 
-        return bookingsPanel;
-    }
+    return bookingsPanel;
+  }
 
-    public BookingsTableModel getBookingsModel() {
+  public BookingsTableModel getBookingsModel() {
 
-        return (BookingsTableModel) bookingsPanel.getBookingsTable().getModel();
-    }
+    return (BookingsTableModel) bookingsPanel.getBookingsTable().getModel();
+  }
 
-    public void setBookingsModel(BookingsTableModel bookings) {
+  public void setBookingsModel(BookingsTableModel bookings) {
 
-        rowSorter = new TableRowSorter<>(bookings);
-        bookingsPanel.getBookingsTable().setModel(bookings);
-        bookingsPanel.getBookingsTable().setRowSorter(rowSorter);
-    }
+    rowSorter = new TableRowSorter<>(bookings);
+    bookingsPanel.getBookingsTable().setModel(bookings);
+    bookingsPanel.getBookingsTable().setRowSorter(rowSorter);
+  }
 
-    public void setSearchButtonListener(ActionListener actionListener) {
+  public void setSearchButtonListener(ActionListener actionListener) {
 
-        CatalinGUIViewBookingsSidebarSearch sidebarSearch = bookingsPanel.getSidepanel().getSidebarSearch();
-        sidebarSearch.getSearchbutton().addActionListener(actionListener);
-    }
+    CatalinGUIViewBookingsSidebarSearch sidebarSearch = bookingsPanel.getSidepanel()
+        .getSidebarSearch();
+    sidebarSearch.getSearchbutton().addActionListener(actionListener);
+  }
 
-    public String getSearchWord() {
+  public String getSearchWord() {
 
-        return bookingsPanel.getSidepanel().getSidebarSearch().getSearchfield().getText();
-    }
+    return bookingsPanel.getSidepanel().getSidebarSearch().getSearchfield().getText();
+  }
 
-    public void filterTable(RowFilter<BookingsTableModel, Object> rowFilter) {
+  public void filterTable(RowFilter<BookingsTableModel, Object> rowFilter) {
 
-        rowSorter.setRowFilter(rowFilter);
-    }
+    rowSorter.setRowFilter(rowFilter);
+  }
 }

@@ -1,7 +1,6 @@
 package de.softwartechnik.catalin.core.repository.base;
 
 import de.softwartechnik.catalin.core.model.CatalinModel;
-
 import java.util.List;
 
 /**
@@ -11,51 +10,48 @@ import java.util.List;
  */
 public interface Repository<EntityType extends CatalinModel> {
 
-    /**
-     * Save the given entity.
-     *
-     * @param entity The entity.
-     *
-     * @return The entity.
-     */
-    EntityType save(EntityType entity);
+  /**
+   * Save the given entity.
+   *
+   * @param entity The entity.
+   * @return The entity.
+   */
+  EntityType save(EntityType entity);
 
-    /**
-     * Find an entity by its primary id.
-     *
-     * @param entityId The id of the entity.
-     *
-     * @return The entity.
-     */
-    EntityType find(long entityId);
+  /**
+   * Find an entity by its primary id.
+   *
+   * @param entityId The id of the entity.
+   * @return The entity.
+   */
+  EntityType find(long entityId);
 
-    /**
-     * Check if there is an entity with the given id.
-     *
-     * @param entityId The id.
-     *
-     * @return The result.
-     */
-    boolean exists(long entityId);
+  /**
+   * Check if there is an entity with the given id.
+   *
+   * @param entityId The id.
+   * @return The result.
+   */
+  boolean exists(long entityId);
 
-    /**
-     * Find all entities.
-     *
-     * @return The entities.
-     */
-    List<EntityType> findAll();
+  /**
+   * Find all entities.
+   *
+   * @return The entities.
+   */
+  List<EntityType> findAll();
 
-    /**
-     * Delete an entity.
-     *
-     * @param entity The entity.
-     */
-    void remove(EntityType entity);
+  /**
+   * Delete an entity.
+   *
+   * @param entity The entity.
+   */
+  void remove(EntityType entity);
 
-    /**
-     * Get the class of the managed entity.
-     *
-     * @return The class of the managed entity.
-     */
-    Class<EntityType> getEntityClass();
+  /**
+   * Get the class of the managed entity.
+   *
+   * @return The class of the managed entity.
+   */
+  Class<EntityType> getEntityClass();
 }

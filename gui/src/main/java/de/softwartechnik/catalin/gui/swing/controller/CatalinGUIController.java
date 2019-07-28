@@ -21,206 +21,209 @@ import de.softwartechnik.catalin.gui.swing.view.CatalinGUIPersonsView;
 import de.softwartechnik.catalin.gui.swing.view.navigation.CatalinGUIViewNavigation;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsDetails;
 import de.softwartechnik.catalin.gui.swing.view.persons.CatalinGUIViewPersonsDetailsModel;
-
-import javax.inject.Inject;
-import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.util.Date;
 import java.util.List;
+import javax.inject.Inject;
+import javax.swing.RowFilter;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 
 public class CatalinGUIController {
 
-    private final CatalinGUIMainView view;
+  private final CatalinGUIMainView view;
 
-    private final PersonService personService;
-    private final BookingService bookingService;
-    private final FlightService flightService;
-    private final EmployeeService employeeService;
+  private final PersonService personService;
+  private final BookingService bookingService;
+  private final FlightService flightService;
+  private final EmployeeService employeeService;
 
-    private final CatalinGUIFlightsView flightsView;
-    private final CatalinGUIBookingsView bookingsView;
-    private final CatalinGUIEmployeesView employeesView;
-    private final CatalinGUIPersonsView personsView;
+  private final CatalinGUIFlightsView flightsView;
+  private final CatalinGUIBookingsView bookingsView;
+  private final CatalinGUIEmployeesView employeesView;
+  private final CatalinGUIPersonsView personsView;
 
-    private final LanguageService languageService;
+  private final LanguageService languageService;
 
-    @Inject
-    public CatalinGUIController(CatalinGUIMainView view, PersonService personService, BookingService bookingService, FlightService flightService, EmployeeService employeeService, CatalinGUIFlightsView flightsView, CatalinGUIBookingsView bookingsView, CatalinGUIEmployeesView employeesView, CatalinGUIPersonsView personsView,LanguageService languageService) {
-        this.view = view;
-        this.personService = personService;
-        this.bookingService = bookingService;
-        this.flightService = flightService;
-        this.employeeService = employeeService;
-        this.flightsView = flightsView;
-        this.bookingsView = bookingsView;
-        this.employeesView = employeesView;
-        this.personsView = personsView;
-        this.languageService = languageService;
-        setupListeners();
-    }
+  @Inject
+  public CatalinGUIController(CatalinGUIMainView view, PersonService personService,
+      BookingService bookingService, FlightService flightService, EmployeeService employeeService,
+      CatalinGUIFlightsView flightsView, CatalinGUIBookingsView bookingsView,
+      CatalinGUIEmployeesView employeesView, CatalinGUIPersonsView personsView,
+      LanguageService languageService) {
+    this.view = view;
+    this.personService = personService;
+    this.bookingService = bookingService;
+    this.flightService = flightService;
+    this.employeeService = employeeService;
+    this.flightsView = flightsView;
+    this.bookingsView = bookingsView;
+    this.employeesView = employeesView;
+    this.personsView = personsView;
+    this.languageService = languageService;
+    setupListeners();
+  }
 
-    private void setupListeners() {
+  private void setupListeners() {
 
-        CatalinGUIViewNavigation navigation = view.getNavigation();
+    CatalinGUIViewNavigation navigation = view.getNavigation();
 
-        navigation.setPersonsMenuListener(new MenuListener() {
-            @Override
-            public void menuSelected(MenuEvent e) {
-                showPersons();
-            }
+    navigation.setPersonsMenuListener(new MenuListener() {
+      @Override
+      public void menuSelected(MenuEvent e) {
+        showPersons();
+      }
 
-            @Override
-            public void menuDeselected(MenuEvent e) {
-            }
+      @Override
+      public void menuDeselected(MenuEvent e) {
+      }
 
-            @Override
-            public void menuCanceled(MenuEvent e) {
-            }
-        });
+      @Override
+      public void menuCanceled(MenuEvent e) {
+      }
+    });
 
-        navigation.setBookingsMenuListener(new MenuListener() {
-            @Override
-            public void menuSelected(MenuEvent e) {
-                showBookings();
-            }
+    navigation.setBookingsMenuListener(new MenuListener() {
+      @Override
+      public void menuSelected(MenuEvent e) {
+        showBookings();
+      }
 
-            @Override
-            public void menuDeselected(MenuEvent e) {
-            }
+      @Override
+      public void menuDeselected(MenuEvent e) {
+      }
 
-            @Override
-            public void menuCanceled(MenuEvent e) {
-            }
-        });
+      @Override
+      public void menuCanceled(MenuEvent e) {
+      }
+    });
 
-        navigation.setEmployeesMenuListener(new MenuListener() {
-            @Override
-            public void menuSelected(MenuEvent e) {
-                showEmployees();
-            }
+    navigation.setEmployeesMenuListener(new MenuListener() {
+      @Override
+      public void menuSelected(MenuEvent e) {
+        showEmployees();
+      }
 
-            @Override
-            public void menuDeselected(MenuEvent e) {
-            }
+      @Override
+      public void menuDeselected(MenuEvent e) {
+      }
 
-            @Override
-            public void menuCanceled(MenuEvent e) {
-            }
-        });
+      @Override
+      public void menuCanceled(MenuEvent e) {
+      }
+    });
 
-        navigation.setFlightsMenuListener(new MenuListener() {
-            @Override
-            public void menuSelected(MenuEvent e) {
-                showFlights();
-            }
+    navigation.setFlightsMenuListener(new MenuListener() {
+      @Override
+      public void menuSelected(MenuEvent e) {
+        showFlights();
+      }
 
-            @Override
-            public void menuDeselected(MenuEvent e) {
-            }
+      @Override
+      public void menuDeselected(MenuEvent e) {
+      }
 
-            @Override
-            public void menuCanceled(MenuEvent e) {
-            }
-        });
+      @Override
+      public void menuCanceled(MenuEvent e) {
+      }
+    });
 
-        personsView.setAddButtonListener(click -> {
-            String firstName = personsView.getFormFirstName();
-            String lastName = personsView.getFormLastName();
-            Date birthday = personsView.getFormBirthday();
+    personsView.setAddButtonListener(click -> {
+      String firstName = personsView.getFormFirstName();
+      String lastName = personsView.getFormLastName();
+      Date birthday = personsView.getFormBirthday();
 
-            Person person = personService.createPerson(firstName, lastName, birthday);
-            personsView.getPersonsModel().addPerson(person);
+      Person person = personService.createPerson(firstName, lastName, birthday);
+      personsView.getPersonsModel().addPerson(person);
 
-            personsView.resetForm();
-        });
+      personsView.resetForm();
+    });
 
-        personsView.setEditButtonListener(click -> {
+    personsView.setEditButtonListener(click -> {
 
-            long selectedPersonId = personsView.getSelectedPersonId();
-            Person person = personService.getPerson(selectedPersonId);
+      long selectedPersonId = personsView.getSelectedPersonId();
+      Person person = personService.getPerson(selectedPersonId);
 
-            CatalinGUIViewPersonsDetailsModel detailsModel = new CatalinGUIViewPersonsDetailsModel(
-                    person.getFirstName(), person.getLastName(), person.getBirthday()
-            );
-            CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(detailsModel,languageService);
+      CatalinGUIViewPersonsDetailsModel detailsModel = new CatalinGUIViewPersonsDetailsModel(
+          person.getFirstName(), person.getLastName(), person.getBirthday()
+      );
+      CatalinGUIViewPersonsDetails det = new CatalinGUIViewPersonsDetails(detailsModel,
+          languageService);
 
-            detailsModel.addObserver(det);
-            detailsModel.notifyObservers();
+      detailsModel.addObserver(det);
+      detailsModel.notifyObservers();
 
-            det.getSave().addActionListener(e -> {
-                person.setFirstName(det.getInputFirstName());
-                person.setLastName(det.getInputLastName());
-                person.setBirthday(det.getInputBirthday());
+      det.getSave().addActionListener(e -> {
+        person.setFirstName(det.getInputFirstName());
+        person.setLastName(det.getInputLastName());
+        person.setBirthday(det.getInputBirthday());
 
-                personService.savePerson(person);
+        personService.savePerson(person);
 
-                det.dispose();
-            });
-        });
+        det.dispose();
+      });
+    });
 
+    flightsView.setDeleteButtonListener(click -> {
 
-        flightsView.setDeleteButtonListener(click -> {
+      int selectedFlight = flightsView.getSelectedFlight();
 
-            int selectedFlight = flightsView.getSelectedFlight();
+      FlightsTableModel flightsModel = flightsView.getFlightsModel();
+      long flightId = (long) flightsModel.getValueAt(selectedFlight, 0);
 
-            FlightsTableModel flightsModel = flightsView.getFlightsModel();
-            long flightId = (long) flightsModel.getValueAt(selectedFlight, 0);
+      flightService.cancelFlight(flightId);
+      flightsModel.removeFlight(selectedFlight);
+    });
 
-            flightService.cancelFlight(flightId);
-            flightsModel.removeFlight(selectedFlight);
-        });
+    bookingsView.setSearchButtonListener(click -> {
 
-        bookingsView.setSearchButtonListener(click -> {
+      String searchWord = bookingsView.getSearchWord();
 
-            String searchWord = bookingsView.getSearchWord();
+      RowFilter rowFilter = new CatalinRowFilter(searchWord);
 
-            RowFilter rowFilter = new CatalinRowFilter(searchWord);
+      bookingsView.filterTable(rowFilter);
+    });
+  }
 
-            bookingsView.filterTable(rowFilter);
-        });
-    }
+  public void showOverview() {
 
-    public void showOverview() {
+  }
 
-    }
+  public void showFlights() {
 
-    public void showFlights() {
+    List<Flight> flights = flightService.getFlights();
+    FlightsTableModel flightsTableModel = new FlightsTableModel(flights, languageService);
 
-        List<Flight> flights = flightService.getFlights();
-        FlightsTableModel flightsTableModel = new FlightsTableModel(flights,languageService);
+    flightsView.setFlightsModel(flightsTableModel);
 
-        flightsView.setFlightsModel(flightsTableModel);
+    view.setView(flightsView);
+  }
 
-        view.setView(flightsView);
-    }
+  public void showBookings() {
 
-    public void showBookings() {
+    List<Booking> bookings = bookingService.getBookings();
+    BookingsTableModel bookingsTableModel = new BookingsTableModel(bookings, languageService);
 
-        List<Booking> bookings = bookingService.getBookings();
-        BookingsTableModel bookingsTableModel = new BookingsTableModel(bookings,languageService);
+    bookingsView.setBookingsModel(bookingsTableModel);
 
-        bookingsView.setBookingsModel(bookingsTableModel);
+    view.setView(bookingsView);
+  }
 
-        view.setView(bookingsView);
-    }
+  public void showEmployees() {
 
-    public void showEmployees() {
+    List<Employee> employees = employeeService.getEmployees();
+    EmployeesTableModel employeesTableModel = new EmployeesTableModel(employees, languageService);
 
-        List<Employee> employees = employeeService.getEmployees();
-        EmployeesTableModel employeesTableModel = new EmployeesTableModel(employees,languageService);
+    employeesView.setEmployeesModel(employeesTableModel);
 
-        employeesView.setEmployeesModel(employeesTableModel);
+    view.setView(employeesView);
+  }
 
-        view.setView(employeesView);
-    }
+  public void showPersons() {
 
-    public void showPersons() {
+    List<Person> persons = personService.getPersons();
+    PersonsTableModel personsTableModel = new PersonsTableModel(persons, languageService);
 
-        List<Person> persons = personService.getPersons();
-        PersonsTableModel personsTableModel = new PersonsTableModel(persons,languageService);
-
-        personsView.setPersonsModel(personsTableModel);
-        view.setView(personsView);
-    }
+    personsView.setPersonsModel(personsTableModel);
+    view.setView(personsView);
+  }
 }

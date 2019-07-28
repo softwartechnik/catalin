@@ -1,24 +1,25 @@
 package de.softwartechnik.catalin.gui.swing.controller;
 
-import javax.swing.*;
+import javax.swing.RowFilter;
 
-public class CatalinRowFilter<BookingsTableModel, Object> extends RowFilter<BookingsTableModel, Object> {
+public class CatalinRowFilter<BookingsTableModel, Object> extends
+    RowFilter<BookingsTableModel, Object> {
 
-    private String searchWord;
+  private String searchWord;
 
-    public CatalinRowFilter(String searchWord) {
-        this.searchWord = searchWord;
+  public CatalinRowFilter(String searchWord) {
+    this.searchWord = searchWord;
+  }
+
+  @Override
+  public boolean include(Entry<? extends BookingsTableModel, ? extends Object> entry) {
+
+    if (searchWord.isEmpty()) {
+      return true;
     }
 
-    @Override
-    public boolean include(Entry<? extends BookingsTableModel, ? extends Object> entry) {
-
-        if (searchWord.isEmpty()) {
-            return true;
-        }
-
-        Object value = (Object) entry.getValue(0);
-        return value.toString().equalsIgnoreCase(searchWord);
-    }
+    Object value = (Object) entry.getValue(0);
+    return value.toString().equalsIgnoreCase(searchWord);
+  }
 }
 

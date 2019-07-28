@@ -8,31 +8,30 @@ import de.softwartechnik.catalin.gui.CatalinGUI;
 import de.softwartechnik.catalin.gui.service.LanguageService;
 import de.softwartechnik.catalin.gui.service.LanguageServiceImpl;
 import de.softwartechnik.catalin.gui.swing.CatalinSwingGUI;
-
 import java.util.Properties;
 
 public class CatalinGUIModule extends AbstractModule {
 
-    private final Properties properties;
-    private final CatalinCoreConfig catalinCoreConfig;
+  private final Properties properties;
+  private final CatalinCoreConfig catalinCoreConfig;
 
-    public CatalinGUIModule(Properties properties, CatalinCoreConfig catalinCoreConfig) {
-        this.properties = properties;
-        this.catalinCoreConfig = catalinCoreConfig;
-    }
+  public CatalinGUIModule(Properties properties, CatalinCoreConfig catalinCoreConfig) {
+    this.properties = properties;
+    this.catalinCoreConfig = catalinCoreConfig;
+  }
 
-    @Override
-    protected void configure() {
+  @Override
+  protected void configure() {
 
-        Names.bindProperties(binder(), properties);
+    Names.bindProperties(binder(), properties);
 
-        bind(CatalinCoreConfig.class).toInstance(catalinCoreConfig);
+    bind(CatalinCoreConfig.class).toInstance(catalinCoreConfig);
 
-        // Install core module
-        install(new CatalinCoreModule(catalinCoreConfig));
+    // Install core module
+    install(new CatalinCoreModule(catalinCoreConfig));
 
-        bind(CatalinGUI.class).to(CatalinSwingGUI.class);
+    bind(CatalinGUI.class).to(CatalinSwingGUI.class);
 
-        bind(LanguageService.class).to(LanguageServiceImpl.class);
-    }
+    bind(LanguageService.class).to(LanguageServiceImpl.class);
+  }
 }

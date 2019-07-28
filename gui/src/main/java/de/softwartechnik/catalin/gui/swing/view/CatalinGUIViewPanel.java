@@ -1,11 +1,11 @@
 package de.softwartechnik.catalin.gui.swing.view;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 
 public class CatalinGUIViewPanel extends JPanel {
 
-    public CatalinGUIViewPanel() {
-        setLayout(new GridLayout(0, 1));
-    }
+  public CatalinGUIViewPanel() {
+    setLayout(new GridLayout(0, 1));
+  }
 }

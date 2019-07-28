@@ -21,40 +21,39 @@ import de.softwartechnik.catalin.core.repository.PlaneJPARepository;
 import de.softwartechnik.catalin.core.repository.PlaneRepository;
 import de.softwartechnik.catalin.core.repository.TerminalJPARepository;
 import de.softwartechnik.catalin.core.repository.TerminalRepository;
-
 import javax.inject.Inject;
 
 public class SQLPersistenceModule extends AbstractModule {
 
-    private final String persistenceUnitName;
+  private final String persistenceUnitName;
 
-    public SQLPersistenceModule(String persistenceUnitName) {
-        this.persistenceUnitName = persistenceUnitName;
+  public SQLPersistenceModule(String persistenceUnitName) {
+    this.persistenceUnitName = persistenceUnitName;
+  }
+
+  @Override
+  protected void configure() {
+
+    install(new JpaPersistModule(persistenceUnitName));
+
+    bind(HibernateInitializer.class).asEagerSingleton();
+
+    bind(PersonRepository.class).to(PersonJPARepository.class);
+    bind(AirlineRepository.class).to(AirlineJPARepository.class);
+    bind(AirportRepository.class).to(AirportJPARepository.class);
+    bind(BookingRepository.class).to(BookingJPARepository.class);
+    bind(BookingExtraRepository.class).to(BookingExtraJPARepository.class);
+    bind(EmployeeRepository.class).to(EmployeeJPARepository.class);
+    bind(FlightRepository.class).to(FlightJPARepository.class);
+    bind(PlaneRepository.class).to(PlaneJPARepository.class);
+    bind(TerminalRepository.class).to(TerminalJPARepository.class);
+  }
+
+  private static class HibernateInitializer {
+
+    @Inject
+    public HibernateInitializer(PersistService persistService) {
+      persistService.start();
     }
-
-    @Override
-    protected void configure() {
-
-        install(new JpaPersistModule(persistenceUnitName));
-
-        bind(HibernateInitializer.class).asEagerSingleton();
-
-        bind(PersonRepository.class).to(PersonJPARepository.class);
-        bind(AirlineRepository.class).to(AirlineJPARepository.class);
-        bind(AirportRepository.class).to(AirportJPARepository.class);
-        bind(BookingRepository.class).to(BookingJPARepository.class);
-        bind(BookingExtraRepository.class).to(BookingExtraJPARepository.class);
-        bind(EmployeeRepository.class).to(EmployeeJPARepository.class);
-        bind(FlightRepository.class).to(FlightJPARepository.class);
-        bind(PlaneRepository.class).to(PlaneJPARepository.class);
-        bind(TerminalRepository.class).to(TerminalJPARepository.class);
-    }
-
-    private static class HibernateInitializer {
-
-        @Inject
-        public HibernateInitializer(PersistService persistService) {
-            persistService.start();
-        }
-    }
+  }
 }

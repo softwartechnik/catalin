@@ -2,32 +2,31 @@ package de.softwartechnik.catalin.gui.swing.view;
 
 import de.softwartechnik.catalin.gui.swing.model.EmployeesTableModel;
 import de.softwartechnik.catalin.gui.swing.view.employees.CatalinGUIViewEmployeesPanel;
-
 import javax.inject.Inject;
-import javax.swing.*;
+import javax.swing.JComponent;
 
 public class CatalinGUIEmployeesView extends AbstractCatalinGUIView {
 
-    private final CatalinGUIViewEmployeesPanel employeesPanel;
+  private final CatalinGUIViewEmployeesPanel employeesPanel;
 
-    @Inject
-    public CatalinGUIEmployeesView(CatalinGUIViewEmployeesPanel employeesPanel) {
-        this.employeesPanel = employeesPanel;
-    }
+  @Inject
+  public CatalinGUIEmployeesView(CatalinGUIViewEmployeesPanel employeesPanel) {
+    this.employeesPanel = employeesPanel;
+  }
 
-    @Override
-    public JComponent getComponent() {
+  @Override
+  public JComponent getComponent() {
 
-        return employeesPanel;
-    }
+    return employeesPanel;
+  }
 
-    public EmployeesTableModel getEmployeesModel() {
+  public EmployeesTableModel getEmployeesModel() {
 
-        return (EmployeesTableModel) employeesPanel.getEmployeesTable().getModel();
-    }
+    return (EmployeesTableModel) employeesPanel.getEmployeesTable().getModel();
+  }
 
-    public void setEmployeesModel(EmployeesTableModel employees) {
+  public void setEmployeesModel(EmployeesTableModel employees) {
 
-        employeesPanel.getEmployeesTable().setModel(employees);
-    }
+    employeesPanel.getEmployeesTable().setModel(employees);
+  }
 }

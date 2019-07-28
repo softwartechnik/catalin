@@ -23,39 +23,39 @@ import de.softwartechnik.catalin.core.service.PersonService;
  */
 public class CatalinCoreModule extends AbstractModule {
 
-    private static final String PERSISTENCE_UNIT_NAME_SQL = "catalinPersistence";
-    private static final String PERSISTENCE_UNIT_LITE = "catalinPersistenceLite";
+  private static final String PERSISTENCE_UNIT_NAME_SQL = "catalinPersistence";
+  private static final String PERSISTENCE_UNIT_LITE = "catalinPersistenceLite";
 
-    private final CatalinCoreConfig coreConfig;
+  private final CatalinCoreConfig coreConfig;
 
-    public CatalinCoreModule(CatalinCoreConfig coreConfig) {
-        this.coreConfig = coreConfig;
+  public CatalinCoreModule(CatalinCoreConfig coreConfig) {
+    this.coreConfig = coreConfig;
+  }
+
+  @Override
+  protected void configure() {
+
+    CatalinPersistenceMode persistenceMode = coreConfig.getPersistenceMode();
+
+    switch (persistenceMode) {
+      case SQL: {
+        install(new SQLPersistenceModule(PERSISTENCE_UNIT_NAME_SQL));
+        break;
+      }
+      case SQLITE: {
+        install(new SQLPersistenceModule(PERSISTENCE_UNIT_LITE));
+        break;
+      }
+      default: {
+        install(new MapPersistenceModule());
+      }
     }
 
-    @Override
-    protected void configure() {
-
-        CatalinPersistenceMode persistenceMode = coreConfig.getPersistenceMode();
-
-        switch (persistenceMode) {
-            case SQL: {
-                install(new SQLPersistenceModule(PERSISTENCE_UNIT_NAME_SQL));
-                break;
-            }
-            case SQLITE: {
-                install(new SQLPersistenceModule(PERSISTENCE_UNIT_LITE));
-                break;
-            }
-            default: {
-                install(new MapPersistenceModule());
-            }
-        }
-
-        bind(PersonService.class).to(CatalinPersonService.class).asEagerSingleton();
-        bind(AirlineService.class).to(CatalinAirlineService.class).asEagerSingleton();
-        bind(FlightService.class).to(CatalinFlightService.class).asEagerSingleton();
-        bind(BookingService.class).to(CatalinBookingService.class).asEagerSingleton();
-        bind(EmployeeService.class).to(CatalinEmployeeService.class).asEagerSingleton();
-        bind(AirportService.class).to(CatalinAirportService.class).asEagerSingleton();
-    }
+    bind(PersonService.class).to(CatalinPersonService.class).asEagerSingleton();
+    bind(AirlineService.class).to(CatalinAirlineService.class).asEagerSingleton();
+    bind(FlightService.class).to(CatalinFlightService.class).asEagerSingleton();
+    bind(BookingService.class).to(CatalinBookingService.class).asEagerSingleton();
+    bind(EmployeeService.class).to(CatalinEmployeeService.class).asEagerSingleton();
+    bind(AirportService.class).to(CatalinAirportService.class).asEagerSingleton();
+  }
 }

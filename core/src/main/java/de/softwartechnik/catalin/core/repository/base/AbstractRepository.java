@@ -7,25 +7,26 @@ import de.softwartechnik.catalin.core.model.CatalinModel;
  *
  * @param <EntityType> The generic type of the entity.
  */
-public abstract class AbstractRepository<EntityType extends CatalinModel> implements Repository<EntityType> {
+public abstract class AbstractRepository<EntityType extends CatalinModel> implements
+    Repository<EntityType> {
 
-    /**
-     * The class of the managed entity.
-     */
-    private final Class<EntityType> entityClazz;
+  /**
+   * The class of the managed entity.
+   */
+  private final Class<EntityType> entityClazz;
 
-    /**
-     * Create a new repository by the managed entities class.
-     *
-     * @param entityClazz The class of the managed entity.
-     */
-    public AbstractRepository(Class<EntityType> entityClazz) {
-        this.entityClazz = entityClazz;
-    }
+  /**
+   * Create a new repository by the managed entities class.
+   *
+   * @param entityClazz The class of the managed entity.
+   */
+  public AbstractRepository(Class<EntityType> entityClazz) {
+    this.entityClazz = entityClazz;
+  }
 
-    @Override
-    public Class<EntityType> getEntityClass() {
+  @Override
+  public Class<EntityType> getEntityClass() {
 
-        return entityClazz;
-    }
+    return entityClazz;
+  }
 }

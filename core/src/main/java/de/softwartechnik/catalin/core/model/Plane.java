@@ -1,10 +1,6 @@
 package de.softwartechnik.catalin.core.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Table(name = Plane.TABLE_NAME)
 @Entity(name = "plane")
@@ -20,17 +19,17 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Plane implements CatalinModel {
 
-    public static final String TABLE_NAME = "planes";
+  public static final String TABLE_NAME = "planes";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
-    @Column(name = "id")
-    private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
+  @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+  @Column(name = "id")
+  private long id;
 
-    private String name;
+  private String name;
 
-    public Plane(String name) {
-        this.name = name;
-    }
+  public Plane(String name) {
+    this.name = name;
+  }
 }
